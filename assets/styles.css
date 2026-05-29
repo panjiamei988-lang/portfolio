@@ -313,6 +313,69 @@ nav {
     border-color: var(--accent);
 }
 
+/* Resume Section */
+.resume-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px;
+    background: var(--bg-primary);
+    border: 1px solid var(--accent-light);
+    border-radius: var(--border-radius);
+    margin-top: 32px;
+    transition: var(--transition);
+}
+
+.resume-section:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.resume-info {
+    flex: 1;
+}
+
+.resume-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.resume-desc {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+.resume-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.resume-button:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(26, 26, 26, 0.15);
+}
+
+.resume-button svg {
+    transition: var(--transition);
+}
+
+.resume-button:hover svg {
+    transform: translateX(4px);
+}
+
 /* Contact Section */
 .contact {
     padding: 120px 48px;

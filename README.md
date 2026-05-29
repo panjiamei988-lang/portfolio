@@ -70,9 +70,8 @@ npm run serve
 3. 在项目中配置图片链接（在 `assets/styles.css` 中）：
 
 ```css
-/* 假设你的 GitHub 用户名是 username，仓库名是 portfolio-images */
 :root {
-    --img-base: 'https://你的用户名.github.io/portfolio-images/images/';
+    --img-base: 'https://panjiamei988-lang.github.io/portfolio-images/images/';
 }
 ```
 
@@ -82,10 +81,9 @@ npm run serve
 <img src="var(--img-base)图片名.jpg" alt="作品图片" />
 ```
 
-或者直接使用完整链接：
-
+**完整示例：**
 ```html
-<img src="https://你的用户名.github.io/portfolio-images/images/图片名.jpg" alt="作品图片" />
+<img src="https://panjiamei988-lang.github.io/portfolio-images/images/你的图片名.jpg" alt="作品图片" />
 ```
 
 ### 快速上传到 GitHub

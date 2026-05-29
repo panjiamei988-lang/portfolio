@@ -1,0 +1,22 @@
+{
+  "name": "design-portfolio",
+  "version": "1.0.0",
+  "description": "一个极简主义风格的综合设计作品集网站",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "serve": "npx serve"
+  },
+  "keywords": [
+    "portfolio",
+    "design",
+    "ui-ux",
+    "graphic-design",
+    "static-site"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

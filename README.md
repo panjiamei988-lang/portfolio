@@ -9,6 +9,7 @@
 - ⚡ **纯静态页面** - 使用HTML/CSS/JavaScript构建，易于部署
 - 🎯 **流畅交互** - 平滑滚动和滚动动画效果
 - 🖼️ **作品展示** - 清晰的作品分类展示
+- ☁️ **GitHub Pages 托管** - 免费图床，无限存储
 
 ## 🚀 技术栈
 
@@ -33,10 +34,13 @@ portfolio/
 │   └── resume/       # 简历信息
 ├── index.html        # 主页文件
 ├── README.md         # 项目说明
-└── .gitignore        # Git忽略文件
+├── .gitignore        # Git忽略文件
+└── package.json      # 项目配置
 ```
 
 ## 🛠️ 安装与使用
+
+### 快速开始
 
 1. 克隆或下载项目到本地
 
@@ -46,10 +50,54 @@ portfolio/
 # 推荐使用本地服务器查看
 python -m http.server 8000
 # 或
-npx serve
+npm run serve
 ```
 
 3. 在浏览器中访问 `http://localhost:8000`
+
+### GitHub Pages 图床设置
+
+#### 方法一：简单方案（推荐）
+
+直接在项目中使用 `assets/images/` 目录的本地图片，项目保持纯静态。
+
+#### 方法二：GitHub Pages 远程图床
+
+1. 在 GitHub 上创建一个新仓库（例如 `portfolio-images`）
+
+2. 上传你的图片到该仓库的 `images/` 目录
+
+3. 在项目中配置图片链接（在 `assets/styles.css` 中）：
+
+```css
+/* 假设你的 GitHub 用户名是 username，仓库名是 portfolio-images */
+:root {
+    --img-base: 'https://你的用户名.github.io/portfolio-images/images/';
+}
+```
+
+4. 在 HTML 中使用：
+
+```html
+<img src="var(--img-base)图片名.jpg" alt="作品图片" />
+```
+
+或者直接使用完整链接：
+
+```html
+<img src="https://你的用户名.github.io/portfolio-images/images/图片名.jpg" alt="作品图片" />
+```
+
+### 快速上传到 GitHub
+
+```bash
+# 1. 在 assets/images/ 目录添加图片
+# 2. 提交到 GitHub
+
+git add assets/images/
+git commit -m "Add portfolio images"
+git push
+```
 
 ## 🎨 自定义配置
 
@@ -69,7 +117,13 @@ npx serve
 
 ### 替换图片
 
-将 `assets/images/` 目录中的图片替换为你自己的作品图片。
+**本地方案：**
+- 将图片放入 `assets/images/` 目录
+- 直接在 HTML 中引用
+
+**GitHub Pages 方案：**
+- 上传到 GitHub 仓库
+- 使用远程 URL 引用
 
 ### 添加更多作品
 

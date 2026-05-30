@@ -1,6 +1,6 @@
 # 🎨 设计作品集 Portfolio
 
-一个极简主义风格的综合设计作品集网站，包含UI/UX设计和平面设计作品展示。
+一个极简主义风格的综合设计作品集网站，展示产品设计和 AIGC 相关的设计项目。
 
 ## ✨ 特点
 
@@ -28,7 +28,7 @@ portfolio/
 │   ├── styles.css    # 主要样式文件
 │   └── script.js     # 交互脚本
 ├── content/          # 作品内容
-│   ├── ui-ux/        # UI/UX设计作品
+│   ├── product-design/ # 产品设计作品
 │   ├── graphic-design/ # 平面设计作品
 │   ├── about/        # 关于信息
 │   └── resume/       # 简历信息
@@ -37,6 +37,32 @@ portfolio/
 ├── .gitignore        # Git忽略文件
 └── package.json      # 项目配置
 ```
+
+## 🎨 精选作品
+
+### 1. Tesla Model400 - AIGC OLED 设计
+
+AIGC 技术驱动的 OLED 显示概念设计，融合智能交互与视觉创新。
+
+### 2. SynMuse - 3D 音乐应用
+
+沉浸式 3D 音乐体验应用，提供独特的听觉可视化效果。
+
+### 3. Nenolizer - Arduino 项目
+
+基于 Arduino 的智能降噪设备设计，结合硬件与软件创新。
+
+### 4. PeakRescue - 应急救援系统
+
+专业应急救援系统界面设计，注重清晰的信息展示与操作流程。
+
+### 5. IceSynk - 音频设备设计
+
+创新音频设备概念设计，融合现代美学与功能性。
+
+### 6. HoldLine - 保持/连接设计
+
+专注于连接与保持的创新设计概念，探索交互边界。
 
 ## 🛠️ 安装与使用
 
@@ -152,6 +178,7 @@ MIT License
 
 - Email: hello@portfolio.com
 - Location: 中国 · 北京
+- Phone: 15867819664
 
 ---
 

@@ -1,165 +1,111 @@
 :root{
-  --bg:#f7f5f2;
-  --text:#111;
-  --sub:#666;
-  --radius:18px;
+  --bg:#0b0c10;
+  --text:#fff;
+  --muted:rgba(255,255,255,.6);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: Inter, "PingFang SC";
   background:var(--bg);
   color:var(--text);
-}
-
-/* NAV */
-.navbar{
-  padding:20px 0;
-}
-
-.container{
-  width:90%;
-  max-width:1100px;
-  margin:auto;
+  overflow-x:hidden;
 }
 
 /* HERO */
 .hero{
-  padding:120px 0 60px;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-.hero-title{
-  font-size:42px;
-  line-height:1.2;
-  margin-bottom:12px;
-}
-
-.hero-sub{
-  color:var(--sub);
-}
-
-/* GRID */
-.grid .container{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:28px;
-}
-
-.card{
-  display:block;
-  border-radius:24px;
-  overflow:hidden;
-  background:#fff;
+.nav a{
+  margin:0 10px;
+  color:white;
+  opacity:.7;
   text-decoration:none;
-
-  box-shadow:0 20px 60px rgba(0,0,0,0.08);
-
-  opacity:0;
-  transform:translateY(60px) scale(0.98);
-  transition:all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.card.show{
-  opacity:1;
-  transform:translateY(0) scale(1);
+/* VERTICAL LIST */
+.vlist{
+  display:flex;
+  flex-direction:column;
+  gap:140px;
+  padding:120px 0;
 }
 
-/* 图片升级 */
-.card img{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  transition:transform 1s ease;
-}
-
-.card:hover img{
-  transform:scale(1.05);
-}
-
-/* hover层级感 */
-.card:hover{
-  transform:translateY(-8px);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .grid .container{
-    grid-template-columns:1fr;
-  }
-}
-
-/* =========================
-   HERO - FRAMER 3.0 SYSTEM
-========================= */
-
-.hero{
+/* ITEM */
+.vitem{
   position:relative;
-  padding:180px 0 100px;
-  overflow:hidden;
+  display:flex;
+  align-items:center;
+  gap:40px;
+  text-decoration:none;
+  color:white;
+  transition:0.5s;
 }
 
-/* 背景光晕 */
-.hero-bg{
-  position:absolute;
-  top:-200px;
-  left:50%;
-  transform:translateX(-50%);
-  width:800px;
-  height:800px;
-  background:radial-gradient(circle, rgba(201,168,124,0.25), transparent 60%);
-  filter:blur(40px);
-  z-index:0;
+/* stagger layout */
+.vitem:nth-child(even){
+  flex-direction:row-reverse;
 }
 
-/* 内容层 */
-.hero-inner{
-  position:relative;
-  z-index:2;
-}
-
-/* 小标签 */
-.hero-kicker{
-  font-size:13px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:#888;
-  margin-bottom:20px;
-}
-
-/* 超大标题（关键） */
-.hero-title{
-  font-size:64px;
-  line-height:1.05;
-  letter-spacing:-0.03em;
-  font-weight:600;
-
-  background:linear-gradient(90deg,#111,#555);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-
-  margin-bottom:20px;
-
-  opacity:0;
+/* IMAGE */
+.vitem img{
+  width:55%;
+  border-radius:24px;
+  transition:0.6s;
   transform:translateY(30px);
-  animation:heroIn 1s ease forwards;
 }
 
-/* 副标题 */
-.hero-sub{
-  max-width:520px;
-  color:#666;
-  font-size:16px;
+/* TITLE */
+.title{
+  font-size:32px;
+  opacity:.8;
+}
 
+/* hover system */
+.vitem:hover img{
+  transform:scale(1.03);
+}
+
+.vlist:hover .vitem{
+  opacity:0.3;
+}
+
+.vitem:hover{
+  opacity:1 !important;
+  transform:translateY(-10px);
+}
+
+/* CURSOR */
+.cursor{
+  position:fixed;
+  width:120px;
+  height:40px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  border-radius:999px;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  color:white;
+}
+
+/* reveal */
+.reveal{
   opacity:0;
-  transform:translateY(20px);
-  animation:heroIn 1s ease .2s forwards;
+  transform:translateY(40px);
+  transition:1s cubic-bezier(.2,.8,.2,1);
 }
 
-/* 动画 */
-@keyframes heroIn{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
 }

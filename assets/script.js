@@ -1,21 +1,35 @@
-const cards = document.querySelectorAll(".card");
+// scroll reveal
+const els=document.querySelectorAll('.reveal');
 
-function reveal(){
-  const trigger = window.innerHeight * 0.85;
-
-  cards.forEach((card, i)=>{
-    const top = card.getBoundingClientRect().top;
-
-    if(top < trigger){
-      setTimeout(()=>{
-        card.classList.add("show");
-      }, i * 80); // ✨ stagger动画
+const io=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      x.target.classList.add('show');
     }
   });
-}
+},{threshold:0.2});
 
-window.addEventListener("scroll", ()=> {
-  requestAnimationFrame(reveal);
+els.forEach(el=>io.observe(el));
+
+
+// CURSOR FOLLOW + TEXT
+const cursor=document.getElementById("cursor");
+
+document.addEventListener("mousemove",(e)=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
 });
 
-reveal();
+const items=document.querySelectorAll(".vitem");
+
+items.forEach(item=>{
+  item.addEventListener("mouseenter",()=>{
+    cursor.innerText=item.querySelector(".title").innerText;
+    cursor.style.transform="translate(-50%,-50%) scale(1.2)";
+  });
+
+  item.addEventListener("mouseleave",()=>{
+    cursor.innerText="";
+    cursor.style.transform="translate(-50%,-50%) scale(1)";
+  });
+});

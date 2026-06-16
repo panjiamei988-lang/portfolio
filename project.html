@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>Case Study</title>
-  <link rel="stylesheet" href="assets/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case</title>
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" style="padding:80px 0">
 
-  <h1 id="title"></h1>
-  <p id="subtitle"></p>
-
-  <img id="heroImg" style="width:100%;border-radius:16px;margin-top:20px">
-
-  <section>
-    <h2>Overview</h2>
-    <p id="overview"></p>
-  </section>
-
-  <section>
-    <h2>Problem</h2>
-    <p id="problem"></p>
-  </section>
-
-  <section>
-    <h2>Insight</h2>
-    <p id="insight"></p>
-  </section>
-
-  <section>
-    <h2>Final</h2>
-    <img id="finalImg" style="width:100%;border-radius:16px">
-  </section>
+<h1 id="title"></h1>
+<p id="desc" style="color:rgba(255,255,255,.6)"></p>
+<img id="img" style="width:100%;border-radius:20px;margin-top:20px">
 
 </div>
 
@@ -41,37 +21,42 @@
 const data = {
   eye:{
     title:"Eye Massager",
-    subtitle:"Relaxation device",
-    heroImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
-    overview:"Overview text",
-    problem:"Problem text",
-    insight:"Insight text",
-    finalImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png"
+    desc:"Relaxation System",
+    img:"https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png"
   },
-
   tesla:{
     title:"Tesla Camera",
-    subtitle:"Instant camera",
-    heroImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
-    overview:"Overview",
-    problem:"Problem",
-    insight:"Insight",
-    finalImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png"
+    desc:"Instant Imaging System",
+    img:"https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png"
+  },
+  nebulizer:{
+    title:"Child Nebulizer",
+    desc:"Medical Interaction Device",
+    img:"https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png"
+  },
+  rescue:{
+    title:"Rescue Vest",
+    desc:"High-altitude Oxygen System",
+    img:"https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png"
+  },
+  ice:{
+    title:"Rooftop tent",
+    desc:"A New Camping Experience",
+    img:"https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png"
+  },
+  exo:{
+    title:"Exoskeleton",
+    desc:"Wearable Assistance System",
+    img:"https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png"
   }
 };
 
-const id = new URLSearchParams(location.search).get("id");
-const p = data[id];
+const id=new URLSearchParams(location.search).get("id");
+const p=data[id];
 
-if(p){
-  title.innerText=p.title;
-  subtitle.innerText=p.subtitle;
-  heroImg.src=p.heroImg;
-  overview.innerText=p.overview;
-  problem.innerText=p.problem;
-  insight.innerText=p.insight;
-  finalImg.src=p.finalImg;
-}
+document.getElementById("title").innerText=p.title;
+document.getElementById("desc").innerText=p.desc;
+document.getElementById("img").src=p.img;
 </script>
 
 </body>

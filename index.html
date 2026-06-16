@@ -1,87 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Framer 4.0 Portfolio</title>
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="container">
-    <div class="logo">PAN PORTFOLIO</div>
-  </div>
-</nav>
-
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
 
-  <div class="container hero-inner">
+  <div class="container hero-center">
 
-    <p class="hero-kicker">Product Designer · System Thinking</p>
+    <h1 class="reveal">Product Designer</h1>
+    <p class="reveal">System · Interaction · Space Thinking</p>
 
-    <h1 class="hero-title">
-      Building<br>
-      Interactive Product Systems
-    </h1>
-
-    <p class="hero-sub">
-      Framer-style vertical portfolio · Interaction · Industrial Design · UX Systems
-    </p>
+    <div class="nav">
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
 
   </div>
+
 </section>
 
-<!-- GRID -->
-<section class="grid">
-  <div class="container">
+<!-- WORKS (VERTICAL + PARALLAX) -->
+<section class="works" id="works">
 
-    <a class="card" href="project.html?id=eye">
+<div class="container">
+
+  <div class="vlist">
+
+    <a class="vitem reveal" href="project.html?id=SynMuse">
       <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png">
-      <div class="card-text">
-        <h2>Eye Massager</h2>
-      </div>
+      <div class="title">Eye Massager</div>
     </a>
 
-    <a class="card" href="project.html?id=tesla">
+    <a class="vitem reveal" href="project.html?id=tesla Model400">
       <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png">
-      <div class="card-text">
-        <h2>Tesla Camera</h2>
-      </div>
+      <div class="title">Tesla Camera</div>
     </a>
 
-    <a class="card" href="project.html?id=nebulizer">
+    <a class="vitem reveal" href="project.html?id=nebulizer">
       <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png">
-      <div class="card-text">
-        <h2>Nebulizer</h2>
-      </div>
+      <div class="title">Nebulizer</div>
     </a>
 
-    <a class="card" href="project.html?id=rescue">
+    <a class="vitem reveal" href="project.html?id=PeakRescue">
       <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png">
-      <div class="card-text">
-        <h2>Rescue Vest</h2>
-      </div>
+      <div class="title">Rescue Vest</div>
     </a>
 
-    <a class="card" href="project.html?id=ice">
+    <a class="vitem reveal" href="project.html?id=Rooftop tent">
       <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png">
-      <div class="card-text">
-        <h2>Ice System</h2>
-      </div>
+      <div class="title">Ice System</div>
     </a>
 
-    <a class="card" href="project.html?id=exoskeleton">
+    <a class="vitem reveal" href="project.html?id=HoldLine">
       <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png">
-      <div class="card-text">
-        <h2>Exoskeleton</h2>
-      </div>
+      <div class="title">Exoskeleton</div>
     </a>
 
   </div>
+
+</div>
+
 </section>
+
+<!-- CURSOR FOLLOW TEXT -->
+<div class="cursor" id="cursor"></div>
 
 <script src="assets/script.js"></script>
 </body>

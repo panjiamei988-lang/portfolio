@@ -1,18 +1,4 @@
-// scroll reveal
-const els=document.querySelectorAll('.reveal');
-
-const io=new IntersectionObserver(e=>{
-  e.forEach(x=>{
-    if(x.isIntersecting){
-      x.target.classList.add('show');
-    }
-  });
-},{threshold:0.2});
-
-els.forEach(el=>io.observe(el));
-
-
-// CURSOR FOLLOW + TEXT
+// CURSOR
 const cursor=document.getElementById("cursor");
 
 document.addEventListener("mousemove",(e)=>{
@@ -20,16 +6,32 @@ document.addEventListener("mousemove",(e)=>{
   cursor.style.top=e.clientY+"px";
 });
 
-const items=document.querySelectorAll(".vitem");
-
-items.forEach(item=>{
+// hover text
+document.querySelectorAll(".vitem").forEach(item=>{
   item.addEventListener("mouseenter",()=>{
     cursor.innerText=item.querySelector(".title").innerText;
-    cursor.style.transform="translate(-50%,-50%) scale(1.2)";
   });
 
   item.addEventListener("mouseleave",()=>{
     cursor.innerText="";
-    cursor.style.transform="translate(-50%,-50%) scale(1)";
   });
+});
+
+// reveal
+const items=document.querySelectorAll(".vitem");
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity=1;
+      e.target.style.transform="translateY(0)";
+    }
+  });
+},{threshold:0.15});
+
+items.forEach(el=>{
+  el.style.opacity=0;
+  el.style.transform="translateY(40px)";
+  el.style.transition="1s cubic-bezier(.2,.8,.2,1)";
+  io.observe(el);
 });

@@ -1,16 +1,54 @@
 :root{
-  --bg:#0b0c10;
+  --bg:#050507;
   --text:#fff;
   --muted:rgba(255,255,255,.6);
 }
 
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family: Inter, "PingFang SC";
-  background:var(--bg);
-  color:var(--text);
+  background:#050507;
+  color:white;
   overflow-x:hidden;
+}
+
+/* 🔴 RED ANIMATION BACKGROUND */
+.hero-bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 20% 20%, #ff2a2a, transparent 40%),
+    radial-gradient(circle at 80% 30%, #ff0040, transparent 35%),
+    radial-gradient(circle at 50% 80%, #ff3b3b, transparent 40%);
+  filter: blur(90px);
+  animation: move 10s infinite alternate ease-in-out;
+}
+
+@keyframes move{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.2) translateY(-30px);}
+}
+
+/* NAV */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:24px 40px;
+  font-size:14px;
+  z-index:10;
+}
+
+.nav a{
+  margin-left:20px;
+  color:white;
+  text-decoration:none;
+  opacity:.7;
 }
 
 /* HERO */
@@ -20,16 +58,34 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
+  position: relative;
+  z-index: 2;
 }
 
-.nav a{
-  margin:0 10px;
-  color:white;
-  opacity:.7;
-  text-decoration:none;
+.h1{
+  font-size:84px;   /* 最大 */
+  font-weight:600;
+  letter-spacing:-2px;
 }
 
-/* VERTICAL LIST */
+.h2{
+  font-size:42px;   /* 🔥 改成 User-Centered Design */
+  font-weight:500;
+  opacity:.85;
+}
+
+.h3{
+  font-size:18px;   /* 最小 */
+  opacity:.5;
+  margin-top:10px;
+}
+
+.hero-sub{
+  margin-top:20px;
+  color:var(--muted);
+}
+
+/* WORKS */
 .vlist{
   display:flex;
   flex-direction:column;
@@ -37,48 +93,46 @@ body{
   padding:120px 0;
 }
 
-/* ITEM */
 .vitem{
-  position:relative;
   display:flex;
+  gap:60px;
   align-items:center;
-  gap:40px;
   text-decoration:none;
   color:white;
-  transition:0.5s;
 }
 
-/* stagger layout */
 .vitem:nth-child(even){
   flex-direction:row-reverse;
 }
 
-/* IMAGE */
 .vitem img{
-  width:55%;
+  width:58%;
   border-radius:24px;
-  transition:0.6s;
-  transform:translateY(30px);
+  transition:.6s;
 }
 
-/* TITLE */
 .title{
-  font-size:32px;
-  opacity:.8;
+  font-size:40px;
 }
 
-/* hover system */
+/* hover */
 .vitem:hover img{
   transform:scale(1.03);
 }
 
 .vlist:hover .vitem{
-  opacity:0.3;
+  opacity:.25;
 }
 
 .vitem:hover{
-  opacity:1 !important;
-  transform:translateY(-10px);
+  opacity:1!important;
+}
+
+/* SECTIONS */
+.section{
+  padding:120px 40px;
+  color:white;
+  opacity:.8;
 }
 
 /* CURSOR */
@@ -86,26 +140,91 @@ body{
   position:fixed;
   width:120px;
   height:40px;
+  border-radius:999px;
   background:rgba(255,255,255,.08);
   backdrop-filter:blur(10px);
-  border-radius:999px;
   pointer-events:none;
   transform:translate(-50%,-50%);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:12px;
-  color:white;
 }
 
-/* reveal */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s cubic-bezier(.2,.8,.2,1);
+/* =========================
+   FRAMER RED HERO BACKGROUND
+   ========================= */
+
+.hero-bg{
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: #0a0a0a;
 }
 
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
+/* 红色能量球 */
+.hero-bg::before,
+.hero-bg::after{
+  content:"";
+  position:absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.9;
+  animation: float 10s ease-in-out infinite alternate;
+}
+
+/* 主红 */
+.hero-bg::before{
+  background: radial-gradient(circle, #ff2a2a, transparent 60%);
+  top: 10%;
+  left: 20%;
+}
+
+/* 深红 */
+.hero-bg::after{
+  background: radial-gradient(circle, #ff0040, transparent 60%);
+  bottom: 10%;
+  right: 20%;
+  animation-delay: -4s;
+}
+
+/* 漂浮动画 */
+@keyframes float{
+  0%{
+    transform: translate(0,0) scale(1);
+  }
+  100%{
+    transform: translate(80px,-60px) scale(1.2);
+  }
+}
+
+/* 噪点层（高级感关键） */
+.noise{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,0,80,0.25), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255,40,40,0.18), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255,0,0,0.12), transparent 50%);
+  filter: blur(80px);
+  z-index:-1;
+  animation: breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes breathe{
+  0%{ transform: scale(1); }
+  100%{ transform: scale(1.2); }
 }

@@ -3,75 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Framer 4.0 Portfolio</title>
+<title>Framer 6.0 Portfolio</title>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
 
+<div class="hero-bg"></div>
+<div class="noise"></div>
+
+<!-- 🔴 BACKGROUND -->
+<div class="hero-bg"></div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">PAN PORTFOLIO</div>
+  <div class="nav-right">
+    <a href="#about">About</a>
+    <a href="#works">Works</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
 
-  <div class="container hero-center">
+  <div class="hero-inner">
 
-    <h1 class="reveal">Product Designer</h1>
-    <p class="reveal">System · Interaction · Space Thinking</p>
+    <h1 class="h1">Product Designer</h1>
 
-    <div class="nav">
-      <a href="#works">Works</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <h2 class="h2">User-Centered Design</h2>
+
+    <h3 class="h3">Framer 6.0 System</h3>
+
+    <p class="hero-sub">
+      Interaction · Motion · Spatial Thinking · System Design
+    </p>
 
   </div>
 
 </section>
 
-<!-- WORKS (VERTICAL + PARALLAX) -->
+<!-- WORKS -->
 <section class="works" id="works">
 
-<div class="container">
+<div class="container vlist">
 
-  <div class="vlist">
+  <a class="vitem" href="project.html?id=eye">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png">
+    <div class="title">Eye Massager</div>
+  </a>
 
-    <a class="vitem reveal" href="project.html?id=SynMuse">
-      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png">
-      <div class="title">Eye Massager</div>
-    </a>
+  <a class="vitem" href="project.html?id=tesla">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png">
+    <div class="title">Tesla Camera</div>
+  </a>
 
-    <a class="vitem reveal" href="project.html?id=tesla Model400">
-      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png">
-      <div class="title">Tesla Camera</div>
-    </a>
+  <a class="vitem" href="project.html?id=nebulizer">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png">
+    <div class="title">Child Nebulizer</div>
+  </a>
 
-    <a class="vitem reveal" href="project.html?id=nebulizer">
-      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png">
-      <div class="title">Nebulizer</div>
-    </a>
+  <a class="vitem" href="project.html?id=rescue">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png">
+    <div class="title">Rescue Vest</div>
+  </a>
 
-    <a class="vitem reveal" href="project.html?id=PeakRescue">
-      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png">
-      <div class="title">Rescue Vest</div>
-    </a>
+  <a class="vitem" href="project.html?id=rooftop">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png">
+    <div class="title">Rooftop Tent</div>
+  </a>
 
-    <a class="vitem reveal" href="project.html?id=Rooftop tent">
-      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png">
-      <div class="title">Ice System</div>
-    </a>
-
-    <a class="vitem reveal" href="project.html?id=HoldLine">
-      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png">
-      <div class="title">Exoskeleton</div>
-    </a>
-
-  </div>
+  <a class="vitem" href="project.html?id=exo">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png">
+    <div class="title">Exoskeleton</div>
+  </a>
 
 </div>
 
 </section>
 
-<!-- CURSOR FOLLOW TEXT -->
-<div class="cursor" id="cursor"></div>
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <h2>About</h2>
+    <p>Product designer focused on systems, interaction, and spatial experience.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Email: 123@example.com</p>
+  </div>
+</section>
 
 <script src="assets/script.js"></script>
 </body>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Study</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 id="title"></h1>
+  <p id="subtitle"></p>
+
+  <img id="heroImg" style="width:100%;border-radius:16px;margin-top:20px">
+
+  <section>
+    <h2>Overview</h2>
+    <p id="overview"></p>
+  </section>
+
+  <section>
+    <h2>Problem</h2>
+    <p id="problem"></p>
+  </section>
+
+  <section>
+    <h2>Insight</h2>
+    <p id="insight"></p>
+  </section>
+
+  <section>
+    <h2>Final</h2>
+    <img id="finalImg" style="width:100%;border-radius:16px">
+  </section>
+
+</div>
+
+<script>
+const data = {
+  eye:{
+    title:"Eye Massager",
+    subtitle:"Relaxation device",
+    heroImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
+    overview:"Overview text",
+    problem:"Problem text",
+    insight:"Insight text",
+    finalImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png"
+  },
+
+  tesla:{
+    title:"Tesla Camera",
+    subtitle:"Instant camera",
+    heroImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
+    overview:"Overview",
+    problem:"Problem",
+    insight:"Insight",
+    finalImg:"https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png"
+  }
+};
+
+const id = new URLSearchParams(location.search).get("id");
+const p = data[id];
+
+if(p){
+  title.innerText=p.title;
+  subtitle.innerText=p.subtitle;
+  heroImg.src=p.heroImg;
+  overview.innerText=p.overview;
+  problem.innerText=p.problem;
+  insight.innerText=p.insight;
+  finalImg.src=p.finalImg;
+}
+</script>
+
+</body>
+</html>

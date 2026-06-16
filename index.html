@@ -1,213 +1,88 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>设计作品集 | Portfolio</title>
-    <link rel="stylesheet" href="assets/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
+
 <body>
-    <nav>
-        <div class="logo">PORTFOLIO.</div>
-        <div class="nav-links">
-            <a href="#works" class="nav-link">作品</a>
-            <a href="#about" class="nav-link">关于</a>
-            <a href="#contact" class="nav-link">联系</a>
-        </div>
-        <button class="menu-toggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
 
-    <section id="hero" class="hero">
-        <h1 class="hero-title">设计创造<br>价值</h1>
-        <p class="hero-subtitle">产品/工业设计师</p>
-        <div class="scroll-indicator">
-            <span>滚动探索</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-    </section>
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">PAN PORTFOLIO</div>
+  </div>
+</nav>
 
-    <section id="works" class="works">
-        <div class="section-header">
-            <h2 class="section-title">精选作品</h2>
-            <p class="section-subtitle">Selected Works</p>
-        </div>
+<section class="hero">
+  <div class="hero-bg"></div>
 
-        <div class="works-grid">
-            <article class="work-item">
-                <div class="work-image">
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png" alt="拍立得">
-                </div>
-                <div class="work-content">
-                    <span class="work-category">拍立得</span>
-                    <h3 class="work-title">Tesla Model400</h3>
-                    <p class="work-description">融合特斯拉的几何风格与拍立得的复古趣味，金属机身搭配木纹，一次成像，即刻收藏。</p>
-                </div>
-            </article>
+  <div class="container hero-inner">
 
-            <article class="work-item">
-                <div class="work-image">
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png" alt="眼部按摩仪">
-                </div>
-                <div class="work-content">
-                    <span class="work-category">眼部按摩仪</span>
-                    <h3 class="work-title">SynMuse</h3>
-                    <p class="work-description">以多感官疗愈重塑眼部健康，融合地方文化与科技美学，打造具舒适感与文化归属感的智能护眼仪。</p>
-                </div>
-            </article>
+    <p class="hero-kicker">Product Designer · System Thinking</p>
 
-            <article class="work-item">
-                <div class="work-image">
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png" alt="儿童哮喘雾化器">
-                </div>
-                <div class="work-content">
-                    <span class="work-category">儿童哮喘雾化器</span>
-                    <h3 class="work-title">Nenolizer</h3>
-                    <p class="work-description">以童趣疗愈，中医护航为理念，结合Arduino的一款硬件与软件的创新设计</p>
-                </div>
-            </article>
+    <h1 class="hero-title">
+      Building<br>
+      Interactive Product Systems
+    </h1>
 
-            <article class="work-item">
-                <div class="work-image">
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png" alt="高原救援马甲">
-                </div>
-                <div class="work-content">
-                    <span class="work-category">高原救援马甲</span>
-                    <h3 class="work-title">PeakRescue</h3>
-                    <p class="work-description">一款为高原救援人群的一体化供氧救援保障马甲设计。</p>
-                </div>
-            </article>
+    <p class="hero-sub">
+      Framer-style vertical portfolio · Interaction · Industrial Design · UX Systems
+    </p>
 
-            <article class="work-item">
-                <div class="work-image">
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png" alt="清冰车">
-                </div>
-                <div class="work-content">
-                    <span class="work-category">智能清冰车</span>
-                    <h3 class="work-title">IceSynk</h3>
-                    <p class="work-description">“一款自动化、智能化技术解决传统人工作业效率低、标准不一的痛点的滑冰场冰面清洁车。</p>
-                </div>
-            </article>
+  </div>
+</section>
 
-            <article class="work-item">
-                <div class="work-image">
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png" alt="下肢外骨骼">
-                </div>
-                <div class="work-content">
-                    <span class="work-category">摄影师外骨骼产品</span>
-                    <h3 class="work-title">HoldLine</h3>
-                    <p class="work-description">聚焦摄影人群的核心痛点，设计的一款穿戴式智能外骨骼设备。</p>
-                </div>
-            </article>
-        </div>
-    </section>
+<!-- GRID -->
+<section class="grid">
+  <div class="container">
 
-    <section id="about" class="about">
-        <div class="section-header">
-            <h2 class="section-title">关于我</h2>
-            <p class="section-subtitle">About Me</p>
-        </div>
+    <a class="card" href="project.html?id=eye">
+      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png">
+      <div class="card-text">
+        <h2>Eye Massager</h2>
+      </div>
+    </a>
 
-        <div class="about-content">
-            <div class="about-image">
-                <div class="placeholder">Profile</div>
-            </div>
-            <div class="about-text">
-                <h3 class="about-title">你好，我是设计师</h3>
-                <p class="about-description">
-                    我是一名热爱设计的创作者，专注于创造美观且实用的数字产品。
-                    拥有丰富的产品设计和平面设计经验，致力于通过设计解决实际问题。
-                </p>
-                <p class="about-description">
-                    我相信好的设计不仅仅是视觉上的美观，更是对用户需求的深刻理解。
-                    在每个项目中，我都会从用户角度出发，创造流畅自然的使用体验。
-                </p>
+    <a class="card" href="project.html?id=tesla">
+      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png">
+      <div class="card-text">
+        <h2>Tesla Camera</h2>
+      </div>
+    </a>
 
-                <div class="resume-section">
-                    <div class="resume-info">
-                        <h4 class="resume-title">下载简历</h4>
-                        <p class="resume-desc">查看我的详细背景、技能和经历</p>
-                    </div>
-                    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/简历.png" download="resume.png" target="_blank" class="resume-button">
-                        <span>下载简历</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+    <a class="card" href="project.html?id=nebulizer">
+      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png">
+      <div class="card-text">
+        <h2>Nebulizer</h2>
+      </div>
+    </a>
 
-                <div class="skills">
-                    <h4 class="skills-title">专业技能</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">PS</span>
-                        <span class="skill-tag">AI</span>
-                        <span class="skill-tag">Rhino</span>
-                        <span class="skill-tag">Keyshot</span>
-                        <span class="skill-tag">CMF</span>
-                        <span class="skill-tag">原型制作与测试</span>
-                        <span class="skill-tag">用户研究与需求分析</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <a class="card" href="project.html?id=rescue">
+      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png">
+      <div class="card-text">
+        <h2>Rescue Vest</h2>
+      </div>
+    </a>
 
-    <section id="contact" class="contact">
-        <div class="section-header">
-            <h2 class="section-title">联系我</h2>
-            <p class="section-subtitle">Get in Touch</p>
-        </div>
+    <a class="card" href="project.html?id=ice">
+      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png">
+      <div class="card-text">
+        <h2>Ice System</h2>
+      </div>
+    </a>
 
-        <div class="contact-content">
-            <div class="contact-text">
-                <h3 class="contact-title">开启合作</h3>
-                <p class="contact-description">
-                    如果你有项目想法或合作意向，欢迎随时联系我。
-                </p>
-                <div class="contact-info">
-                    <div class="info-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <span>3303953515@qq.com</span>
-                    </div>
-                    <div class="info-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <span>15867819664</span>
-                    </div>
-                    <div class="info-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <span>中国 · 宁波/杭州</span>
-                    </div>
-                </div>
-            </div>
-            <a href="mailto:hello@portfolio.com" class="contact-button">
-                发送邮件
-            </a>
-        </div>
-    </section>
+    <a class="card" href="project.html?id=exoskeleton">
+      <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png">
+      <div class="card-text">
+        <h2>Exoskeleton</h2>
+      </div>
+    </a>
 
-    <footer class="footer">
-        <p class="footer-text">© 2026 Portfolio. All rights reserved.</p>
-    </footer>
+  </div>
+</section>
 
-    <script src="assets/script.js"></script>
+<script src="assets/script.js"></script>
 </body>
 </html>

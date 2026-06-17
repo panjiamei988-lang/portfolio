@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Designer Portfolio - 盘家美</title>
+
+  <!-- Load Fonts First -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
+
+  <!-- Then Load Styles -->
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/ultimate-fix.css">
+
+  <!-- Custom Styles for Data-Driven Version -->
+  <style>
+    /* Dark mode styles */
+    .dark-mode {
+      --color-bg-primary: #0A0A0A;
+      --color-bg-secondary: #1A1A1A;
+      --color-bg-tertiary: #2A2A2A;
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: #B0B0B0;
+      --color-text-tertiary: #808080;
+      --color-accent-primary: #FF2A2A;
+      --color-accent-secondary: #CC0000;
+      --color-border: #333333;
+    }
+
+    /* Loading animation */
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    .loading {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* Image error state */
+    .image-error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+
+    .error-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .error-text {
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    /* Enhanced hover effects */
+    .work-item {
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .work-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .work-item:hover .work-image {
+      transform: scale(1.05);
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--color-bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-accent-primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-accent-secondary);
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="nav-main">
+    <div class="nav-container">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#works" class="nav-link">Works</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- DYNAMIC BACKGROUND -->
+  <div class="fluid-bg"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- CURSOR -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-follower"></div>
+  <div class="cursor-text"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="about">
+    <div class="hero-content">
+      <h1 class="hero-title">Product Designer</h1>
+      <h2 class="hero-subtitle">User-Centered Design</h2>
+      <h3 class="hero-tagline">盘家美 - 创造价值的设计师</h3>
+    </div>
+  </section>
+
+  <!-- WORKS SECTION - DATA DRIVEN -->
+  <section class="works" id="works">
+    <div class="works-container" id="works-container">
+      <!-- Projects will be loaded here by JavaScript -->
+      <div class="loading" style="text-align: center; padding: 4rem;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🔄</div>
+        <div>正在加载作品...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section class="skills" id="skills">
+    <div class="skills-container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">UI/UX Design</div>
+        <div class="skill-item">Prototyping</div>
+        <div class="skill-item">User Research</div>
+        <div class="skill-item">Interaction Design</div>
+        <div class="skill-item">Design Systems</div>
+        <div class="skill-item">Framer</div>
+        <div class="skill-item">Industrial Design</div>
+        <div class="skill-item">Arduino</div>
+        <div class="skill-item">3D Modeling</div>
+        <div class="skill-item">User Testing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-text">Let's create something amazing together</p>
+      <div class="contact-links">
+        <a href="mailto:3303953515@qq.com" class="contact-link">📧 3303953515@qq.com</a>
+        <a href="tel:15867819664" class="contact-link">📱 15867819664</a>
+      </div>
+      <div class="social-links" style="margin-top: 2rem;">
+        <a href="#" class="social-link">LinkedIn</a>
+        <a href="#" class="social-link">Behance</a>
+        <a href="#" class="social-link">Dribbble</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="assets/script.js"></script>
+  <script src="assets/minimal-fix.js"></script>
+  <script src="assets/project-data-manager.js"></script>
+  <script src="assets/data-driven-init.js"></script>
+  <script src="assets/auto-update.js"></script>
+  <script src="assets/mobile-enhancements.js"></script>
+  <script src="assets/pdf-extractor.js"></script>
+</body>
+</html>

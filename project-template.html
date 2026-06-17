@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study - Product Designer</title>
+
+  <!-- Load Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
+
+  <!-- Load Styles -->
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/ultimate-fix.css">
+  <link rel="stylesheet" href="assets/project-styles.css">
+
+  <style>
+    /* Project specific styles */
+    .project-page {
+      background: var(--color-bg-primary);
+    }
+
+    /* Hero section */
+    .case-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FF2A2A" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,154.7C672,160,768,192,864,208C960,224,1056,224,1152,208C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .case-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 0.9;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .project-subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--color-text-secondary);
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.2s forwards;
+    }
+
+    .project-image {
+      max-width: 800px;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.4s forwards;
+    }
+
+    /* Case sections */
+    .case-section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .case-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--color-accent-primary);
+    }
+
+    /* Timeline styles */
+    .timeline {
+      padding: 4rem 0;
+    }
+
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-border);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      flex-direction: row;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-marker {
+      background: var(--color-accent-primary);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      flex: 1;
+      margin: 0 2rem;
+      padding: 2rem;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-lg);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: 2rem;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 2rem;
+      text-align: left;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+    }
+
+    .timeline-content p {
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Reflection section */
+    .reflection {
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: 4rem;
+      margin: 4rem auto;
+      max-width: 1000px;
+    }
+
+    .reflection p {
+      line-height: 1.8;
+      color: var(--color-text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item {
+        flex-direction: row !important;
+        padding-left: 80px;
+      }
+
+      .timeline-marker {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .timeline-content {
+        margin: 0 !important;
+        text-align: left !important;
+      }
+    }
+  </style>
+</head>
+<body class="project-page">
+  <!-- NAVIGATION -->
+  <nav class="nav-main">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">← Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- SCROLL-DRIVEN SECTIONS -->
+  <section class="case-hero" data-section="hero">
+    <div class="case-content">
+      <h1 id="projectTitle" class="project-title">Loading...</h1>
+      <h2 id="projectSubtitle" class="project-subtitle">Loading...</h2>
+      <img id="projectHeroImage" src="" alt="Project hero image" class="project-image">
+    </div>
+  </section>
+
+  <section class="case-section" data-section="problem">
+    <div class="case-content">
+      <h2 class="section-title">Problem Statement</h2>
+      <div id="problemContent" class="case-text">
+        <p>Loading...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" data-section="insight">
+    <div class="case-content">
+      <h2 class="section-title">Key Insights</h2>
+      <div id="insightContent" class="case-text">
+        <p>Loading...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section timeline" data-section="process">
+    <div class="case-content">
+      <h2 class="section-title">Design Process</h2>
+      <div class="timeline-container" id="timeline-container">
+        <!-- Timeline will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" data-section="solution">
+    <div class="case-content">
+      <h2 class="section-title">Solution</h2>
+      <div id="solutionContent">
+        <img id="finalResultImage" src="" alt="Final design result" class="project-image" style="margin-bottom: 2rem;">
+        <div id="solutionText" class="case-text">
+          <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" data-section="technologies">
+    <div class="case-content">
+      <h2 class="section-title">Technologies Used</h2>
+      <div id="technologiesContent" class="tech-grid">
+        <!-- Technologies will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" data-section="results">
+    <div class="case-content">
+      <h2 class="section-title">Results</h2>
+      <div id="resultsContent" class="case-text">
+        <p>Loading...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" data-section="reflection">
+    <div class="case-content">
+      <h2 class="section-title">Reflection & Learnings</h2>
+      <div class="reflection" id="reflectionContent">
+        <p>This project provided valuable insights into the importance of user-centered design and iterative development. Key learnings include...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="assets/script.js"></script>
+  <script src="assets/project-enhancements.js"></script>
+  <script src="assets/project-data-manager.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const dataManager = new ProjectDataManager();
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('id');
+
+      if (projectId) {
+        const project = await dataManager.loadProject(projectId);
+        if (project) {
+          // Update content
+          document.getElementById('projectTitle').textContent = project.title;
+          document.getElementById('projectSubtitle').textContent = project.category;
+          document.getElementById('projectHeroImage').src = project.heroImage || project.image;
+          document.getElementById('finalResultImage').src = project.image;
+
+          document.getElementById('problemContent').innerHTML = `<p>${project.problem}</p>`;
+          document.getElementById('insightContent').innerHTML = `<p>${project.insight}</p>`;
+          document.getElementById('solutionText').innerHTML = `<p>${project.solution}</p>`;
+          document.getElementById('resultsContent').innerHTML = `<p><strong>${project.results}</strong></p>`;
+
+          // Update technologies
+          const techHTML = project.technologies.map(tech => `
+            <div class="tech-item">${tech}</div>
+          `).join('');
+          document.getElementById('technologiesContent').innerHTML = techHTML;
+
+          // Update timeline
+          const timelineHTML = project.process.map(step => `
+            <div class="timeline-item">
+              <div class="timeline-marker">${step.step}</div>
+              <div class="timeline-content">
+                <h3>${step.title}</h3>
+                <p>${step.desc}</p>
+              </div>
+            </div>
+          `).join('');
+          document.getElementById('timeline-container').innerHTML = timelineHTML;
+
+          // Update title
+          document.title = `${project.title} - Case Study | Product Designer Portfolio`;
+
+          // Initialize scroll animations
+          const sections = document.querySelectorAll('.case-section');
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const contents = entry.target.querySelectorAll('.timeline-content');
+                contents.forEach((content, index) => {
+                  setTimeout(() => {
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                  }, index * 100);
+                });
+              }
+            });
+          }, { threshold: 0.1 });
+
+          sections.forEach(section => {
+            observer.observe(section);
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

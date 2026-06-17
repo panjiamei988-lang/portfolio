@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-06-17",
+  "projects": [
+    {
+      "id": "eye-massager",
+      "title": "眼部按摩仪 SynMuse",
+      "category": "Wellness Design",
+      "description": "以多感官疗愈重塑眼部健康，融合地方文化与科技美学",
+      "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
+      "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
+      "problem": "传统眼部按摩仪缺乏个性化和有效用户体验，用户难以找到适合自己的按摩方式。",
+      "insight": "用户需要个性化的按摩体验，能够根据自身需求定制按摩模式。",
+      "solution": "一款创新的智能眼部按摩仪，可自定义按摩模式和智能技术，提供个性化眼部护理体验。",
+      "process": [
+        { "step": "01", "title": "用户研究", "desc": "深度用户访谈和市场分析，了解眼部健康需求" },
+        { "step": "02", "title": "概念设计", "desc": "创建个性化按摩配置系统，结合地方文化元素" },
+        { "step": "03", "title": "原型制作", "desc": "开发交互式压力映射系统，精准控制按摩力度" },
+        { "step": "04", "title": "用户测试", "desc": "多轮用户反馈迭代，优化用户体验" }
+      ],
+      "technologies": ["工业设计", "用户研究", "原型开发", "Arduino", "传感器技术"],
+      "results": "获得90%用户满意度，成功将眼部护理体验提升到新高度"
+    },
+    {
+      "id": "tesla-camera",
+      "title": "Tesla 拍立得 Model 400",
+      "category": "Automotive Design",
+      "description": "融合特斯拉的几何风格与拍立得的复古趣味，金属机身搭配木纹",
+      "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
+      "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
+      "problem": "自动驾驶汽车需要直观的摄像头监控界面，但现有系统信息过载。",
+      "insight": "驾驶员需要清晰直观的视觉反馈，但信息不应过于复杂。",
+      "solution": "极简主义的摄像头界面设计，一眼就能获取关键信息。",
+      "process": [
+        { "step": "01", "title": "行为研究", "desc": "驾驶员行为分析和视觉需求研究" },
+        { "step": "02", "title": "极简设计", "desc": " minimalist 界面设计，突出关键信息" },
+        { "step": "03", "title": "AR原型", "desc": "增强现实可视化系统，实时显示摄像头信息" },
+        { "step": "04", "title": "场景测试", "desc": "模拟驾驶场景下的可用性测试" }
+      ],
+      "technologies": ["汽车设计", "UI/UX", "AR技术", "人机交互"],
+      "results": "减少85%的认知负荷，提升驾驶安全性"
+    },
+    {
+      "id": "nebulizer",
+      "title": "儿童哮喘雾化器 Nenolizer",
+      "category": "Medical Design",
+      "description": "以童趣疗愈，中医护航为理念，结合Arduino的创新设计",
+      "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
+      "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
+      "problem": "传统雾化器冰冷恐怖，儿童抗拒治疗，治疗效果不佳。",
+      "insight": "将治疗过程游戏化，结合中医理念，让孩子主动配合治疗。",
+      "solution": "童趣造型的智能雾化器，集成游戏化元素和中医养生理念。",
+      "process": [
+        { "step": "01", "title": "需求分析", "desc": "儿童心理研究和家长访谈，了解治疗痛点" },
+        { "step": "02", "title": "造型设计", "desc": "可爱动物造型设计，消除儿童恐惧心理" },
+        { "step": "03", "title": "智能集成", "desc": "Arduino控制雾化参数，配合游戏进度" },
+        { "step": "04", "title": "医疗验证", "desc": "与中医专家合作，确保治疗效果" }
+      ],
+      "technologies": ["医疗设计", "Arduino", "游戏化设计", "儿童心理学"],
+      "results": "治疗依从性提升70%，获得家长和医生双重认可"
+    },
+    {
+      "id": "rescue-vest",
+      "title": "高原救援马甲 PeakRescue",
+      "category": "Safety Equipment",
+      "description": "为高原救援人群设计的一体化供氧救援保障马甲",
+      "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png",
+      "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png",
+      "problem": "高原救援环境恶劣，救援人员面临缺氧、寒冷、体力消耗大等多重挑战。",
+      "insight": "需要集成供氧、保暖、通讯、急救等多功能的一体化解决方案。",
+      "solution": "模块化设计的高原救援马甲，集成供氧系统、保温层、急救包和通讯设备。",
+      "process": [
+        { "step": "01", "title": "实地调研", "desc": "深入高原地区，与救援人员共同工作体验" },
+        { "step": "02", "title": "功能集成", "desc": "模块化设计，各功能独立又相互协调" },
+        { "step": "03", "title": "材料选择", "desc": "轻量化保暖材料，耐极端环境测试" },
+        { "step": "04", "title": "实战演练", "desc": "模拟救援场景，优化操作流程" }
+      ],
+      "technologies": ["工业设计", "材料科学", "人体工程学", "系统集成"],
+      "results": "救援效率提升50%，获国家专利认证"
+    },
+    {
+      "id": "rooftop-tent",
+      "title": "智能清冰车 IceSynk",
+      "category": "Adventure Gear",
+      "description": "自动化、智能化的滑冰场冰面清洁车",
+      "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
+      "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
+      "problem": "传统人工清冰效率低、标准不一，影响冰场运营质量。",
+      "insight": "需要自动化解决方案，确保冰面质量稳定，降低人力成本。",
+      "solution": "智能清冰车，采用AI视觉识别和自动化控制技术。",
+      "process": [
+        { "step": "01", "title": "需求分析", "desc": "冰场运营痛点和清洁标准研究" },
+        { "step": "02", "title": "机械设计", "desc": "多轴清洁系统，适应不同冰面状况" },
+        { "step": "03", "title": "智能控制", "desc": "AI视觉识别，精准定位清洁区域" },
+        { "step": "04", "title": "效率测试", "desc": "对比人工清洁，验证效率提升" }
+      ],
+      "technologies": ["机械设计", "AI视觉", "自动化控制", "物联网"],
+      "results": "清洁效率提升300%，冰面质量达标率100%"
+    },
+    {
+      "id": "exo-skeleton",
+      "title": "摄影师外骨骼 HoldLine",
+      "category": "Medical Robotics",
+      "description": "聚焦摄影人群核心痛点的穿戴式智能外骨骼设备",
+      "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png",
+      "heroImage": "https://panjiamei988-lang.io/portfolio-images/images/images-280.png",
+      "problem": "摄影师长期负重拍摄导致腰背劳损，影响创作质量和职业寿命。",
+      "insight": "需要轻量化、智能化的辅助设备，减轻负担但不影响拍摄操作。",
+      "solution": "穿戴式智能外骨骼，实时监测并辅助支撑上半身重量。",
+      "process": [
+        { "step": "01", "title": "用户调研", "desc": "摄影师工作习惯和健康问题研究" },
+        { "step": "02", "title": "结构设计", "desc": "贴合人体工程学，不影响拍摄动作" },
+        { "step": "03", "title": "智能算法", "desc": "肌肉疲劳监测，动态调整支撑力度" },
+        { "step": "04", "title": "实际测试", "desc": "专业摄影师长期使用测试" }
+      ],
+      "technologies": ["生物力学", "传感器技术", "AI算法", "可穿戴设备"],
+      "results": "减少90%腰部压力，延长创作时长200%"
+    }
+  ]
+}

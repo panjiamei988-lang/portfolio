@@ -4,17 +4,25 @@
 .case-hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;      /* 垂直居中 */
+  justify-content: center;   /* 水平居中 */
   position: relative;
   overflow: hidden;
   background: radial-gradient(circle at center, rgba(255, 42, 42, 0.1) 0%, transparent 50%);
+  padding: var(--space-4xl) 0;
+  box-sizing: border-box;
 }
 
-.case-content {
+/* 专门针对 Hero 第一屏文字容器的强力居中限制，避免与下方 case-section 的同名类冲突 */
+.case-hero .case-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   max-width: 1200px;
   padding: 0 2rem;
+  margin: auto;             /* 终极垂直居中保障 */
 }
 
 #projectTitle {
@@ -22,8 +30,8 @@
   font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 900;
   letter-spacing: -0.03em;
-  line-height: 0.9;
-  margin-bottom: 1rem;
+  line-height: 1.1;         /* 略微放开行高，防止大写字母顶端被裁切 */
+  margin-bottom: 1.5rem;
   background: linear-gradient(to right, var(--color-text-primary), var(--color-accent-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -35,7 +43,7 @@
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 700;
   color: var(--color-text-secondary);
-  margin-bottom: 3rem;
+  margin-bottom: 0;         /* 移除底部过大的外边距，完全交由父级容器弹性居中 */
 }
 
 .project-image {
@@ -79,7 +87,10 @@
 .case-text {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
 }
 
 /* Timeline Styles */
@@ -215,4 +226,44 @@
 
 .loading {
   animation: pulse 1.5s infinite;
+}
+
+/* ==================== TIMELINE TEXT ALIGNMENT FIX ==================== */
+
+/* 1. 拓宽卡片容器：原代码 nth-child(odd) 给右边留了 50% 太多了，限制了内容区 */
+.timeline-item:nth-child(odd) {
+  margin-right: 15%; /* 释放空间，从 50% 缩小到 15% */
+  padding-right: var(--space-2xl) !important;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 15%;  /* 释放空间，从 50% 缩小到 15% */
+  padding-left: var(--space-2xl) !important;
+}
+
+/* 2. 控制时间轴内部内容对齐 */
+.timeline-content {
+  max-width: 100% !important;
+  text-align: left !important; /* 工业设计作品集流程说明，左对齐比居中更显严谨秩序 */
+}
+
+/* 3. 让标题（如：背景调研）横向单独成一排 */
+.timeline-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+  white-space: nowrap; /* 强制不换行 */
+}
+
+/* 4. 让每一句用空格隔开的短句（如：竞品调研、结构分析）各自横向单独成排 */
+.timeline-desc-list {
+  display: flex;
+  flex-direction: column; /* 垂直向下排列 */
+  gap: var(--space-xs);   /* 短句之间的呼吸间距 */
+}
+
+.timeline-desc-list div {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  white-space: nowrap;    /* 核心：强制整句短语横向显示，绝对不单字换行 */
 }

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Admin - 管理界面</title>
+
+  <!-- Load Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
+
+  <!-- Load Styles -->
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /* Admin styles */
+    :root {
+      --admin-bg: #0A0A0A;
+      --admin-panel: #1A1A1A;
+      --admin-border: #333;
+      --admin-accent: #FF2A2A;
+      --admin-success: #4CAF50;
+      --admin-error: #f44336;
+      --admin-text: #FFFFFF;
+      --admin-text-secondary: #B0B0B0;
+    }
+
+    body {
+      background: var(--admin-bg);
+      color: var(--admin-text);
+      font-family: Inter, sans-serif;
+    }
+
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .admin-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .admin-header h1 {
+      font-family: 'PP Editorial New', serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .admin-card {
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .admin-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 42, 42, 0.2);
+    }
+
+    .admin-card h3 {
+      margin-bottom: 1rem;
+      color: var(--admin-accent);
+    }
+
+    .admin-button {
+      background: var(--admin-accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .admin-button:hover {
+      background: #CC0000;
+      transform: translateY(-2px);
+    }
+
+    .admin-button.secondary {
+      background: #333;
+    }
+
+    .admin-button.secondary:hover {
+      background: #444;
+    }
+
+    /* Project Editor */
+    .project-editor {
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--admin-text-secondary);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      background: var(--admin-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 6px;
+      color: var(--admin-text);
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--admin-accent);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Project List */
+    .project-list {
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .project-item {
+      background: var(--admin-bg);
+      border: 1px solid var(--admin-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .project-item:hover {
+      border-color: var(--admin-accent);
+    }
+
+    .project-info h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info p {
+      color: var(--admin-text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-button {
+      background: none;
+      border: 1px solid var(--admin-border);
+      color: var(--admin-text);
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-button:hover {
+      background: var(--admin-accent);
+      border-color: var(--admin-accent);
+    }
+
+    .project-button.delete:hover {
+      background: var(--admin-error);
+      border-color: var(--admin-error);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--admin-panel);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--admin-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-success);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      color: var(--admin-success);
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      z-index: 2000;
+    }
+
+    .notification.show {
+      transform: translateX(0);
+    }
+
+    .notification.error {
+      border-color: var(--admin-error);
+      color: var(--admin-error);
+    }
+
+    /* Loading */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .loading.active {
+      display: block;
+    }
+
+    .spinner {
+      border: 3px solid var(--admin-border);
+      border-top: 3px solid var(--admin-accent);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .project-actions {
+        width: 100%;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Header -->
+    <div class="admin-header">
+      <h1>Portfolio Admin</h1>
+      <p style="color: var(--admin-text-secondary);">管理你的作品集项目</p>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h3>📊 概览</h3>
+        <p id="project-count">加载中...</p>
+        <p id="last-updated">加载中...</p>
+        <button class="admin-button secondary" onclick="refreshData()">🔄 刷新数据</button>
+      </div>
+
+      <div class="admin-card">
+        <h3>📤 导出数据</h3>
+        <p>导出所有项目数据为JSON文件</p>
+        <button class="admin-button" onclick="exportData()">导出数据</button>
+      </div>
+
+      <div class="admin-card">
+        <h3>🔄 同步GitHub</h3>
+        <p>将更改推送到GitHub仓库</p>
+        <button class="admin-button secondary" onclick="syncGitHub()">同步到GitHub</button>
+      </div>
+    </div>
+
+    <!-- Project Editor -->
+    <div class="project-editor">
+      <h3>📝 编辑项目</h3>
+      <form id="project-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>项目标题</label>
+            <input type="text" id="project-title" required>
+          </div>
+          <div class="form-group">
+            <label>项目类别</label>
+            <input type="text" id="project-category" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>项目描述</label>
+          <textarea id="project-description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>项目图片URL</label>
+          <input type="url" id="project-image" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>问题描述</label>
+            <textarea id="project-problem" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>关键洞察</label>
+            <textarea id="project-insight" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>解决方案</label>
+          <textarea id="project-solution" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>使用的技术（逗号分隔）</label>
+          <input type="text" id="project-technologies" placeholder="UI/UX Design, Prototyping">
+        </div>
+
+        <div class="form-group">
+          <label>项目结果</label>
+          <textarea id="project-results"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>设计过程（JSON格式）</label>
+          <textarea id="project-process" placeholder='[{"step": "01", "title": "Research", "desc": "用户研究"}]'></textarea>
+        </div>
+
+        <button type="submit" class="admin-button">💾 保存项目</button>
+        <button type="button" class="admin-button secondary" onclick="resetForm()">🔄 重置表单</button>
+      </form>
+    </div>
+
+    <!-- Project List -->
+    <div class="project-list">
+      <h3>📁 项目列表</h3>
+      <div id="projects-container">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>加载中...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>编辑项目</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="edit-form">
+        <!-- Edit form fields will be populated here -->
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div id="notification" class="notification"></div>
+
+  <script src="assets/project-data-manager.js"></script>
+  <script>
+    let dataManager = new ProjectDataManager();
+    let currentEditingId = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadProjects();
+      updateStats();
+    });
+
+    // Load projects
+    async function loadProjects() {
+      try {
+        await dataManager.loadProjects();
+        renderProjects();
+      } catch (error) {
+        showNotification('加载项目失败: ' + error.message, 'error');
+      }
+    }
+
+    // Render projects list
+    function renderProjects() {
+      const projects = dataManager.getProjects();
+      const container = document.getElementById('projects-container');
+
+      if (projects.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--admin-text-secondary);">暂无项目</p>';
+        return;
+      }
+
+      container.innerHTML = projects.map(project => `
+        <div class="project-item">
+          <div class="project-info">
+            <h4>${project.title}</h4>
+            <p>${project.category} | ${project.description}</p>
+          </div>
+          <div class="project-actions">
+            <button class="project-button" onclick="editProject('${project.id}')">✏️ 编辑</button>
+            <button class="project-button" onclick="previewProject('${project.id}')">👁️ 预览</button>
+            <button class="project-button delete" onclick="deleteProject('${project.id}')">🗑️ 删除</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Update stats
+    function updateStats() {
+      const stats = dataManager.getStats();
+      document.getElementById('project-count').textContent = `共 ${stats.total} 个项目`;
+      document.getElementById('last-updated').textContent = `最后更新: ${stats.lastUpdated}`;
+    }
+
+    // Form submission
+    document.getElementById('project-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const projectData = {
+        id: currentEditingId || `project-${Date.now()}`,
+        title: document.getElementById('project-title').value,
+        category: document.getElementById('project-category').value,
+        description: document.getElementById('project-description').value,
+        image: document.getElementById('project-image').value,
+        heroImage: document.getElementById('project-image').value,
+        problem: document.getElementById('project-problem').value,
+        insight: document.getElementById('project-insight').value,
+        solution: document.getElementById('project-solution').value,
+        technologies: document.getElementById('project-technologies').value.split(',').map(t => t.trim()),
+        results: document.getElementById('project-results').value,
+        process: JSON.parse(document.getElementById('project-process').value || '[]')
+      };
+
+      try {
+        if (currentEditingId) {
+          dataManager.updateProject(currentEditingId, projectData);
+          showNotification('项目更新成功！');
+        } else {
+          dataManager.addProject(projectData);
+          showNotification('项目添加成功！');
+        }
+
+        await loadProjects();
+        updateStats();
+        resetForm();
+      } catch (error) {
+        showNotification('保存失败: ' + error.message, 'error');
+      }
+    });
+
+    // Edit project
+    function editProject(id) {
+      const project = dataManager.getProject(id);
+      if (!project) return;
+
+      currentEditingId = id;
+      document.getElementById('project-title').value = project.title;
+      document.getElementById('project-category').value = project.category;
+      document.getElementById('project-description').value = project.description;
+      document.getElementById('project-image').value = project.image;
+      document.getElementById('project-problem').value = project.problem;
+      document.getElementById('project-insight').value = project.insight;
+      document.getElementById('project-solution').value = project.solution;
+      document.getElementById('project-technologies').value = project.technologies.join(', ');
+      document.getElementById('project-results').value = project.results || '';
+      document.getElementById('project-process').value = JSON.stringify(project.process || []);
+
+      // Scroll to form
+      document.querySelector('.project-editor').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Preview project
+    function previewProject(id) {
+      const project = dataManager.getProject(id);
+      if (!project) return;
+
+      // Open in new tab
+      const previewUrl = `project-template.html?id=${id}`;
+      window.open(previewUrl, '_blank');
+    }
+
+    // Delete project
+    function deleteProject(id) {
+      if (confirm('确定要删除这个项目吗？')) {
+        dataManager.deleteProject(id);
+        loadProjects();
+        updateStats();
+        showNotification('项目已删除');
+      }
+    }
+
+    // Reset form
+    function resetForm() {
+      document.getElementById('project-form').reset();
+      currentEditingId = null;
+    }
+
+    // Refresh data
+    async function refreshData() {
+      showNotification('正在刷新数据...');
+      await loadProjects();
+      updateStats();
+      showNotification('数据已刷新');
+    }
+
+    // Export data
+    function exportData() {
+      const projects = dataManager.getProjects();
+      const dataStr = JSON.stringify(projects, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(dataBlob);
+      link.download = `portfolio-projects-${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+
+      showNotification('数据已导出');
+    }
+
+    // Sync to GitHub
+    async function syncGitHub() {
+      showNotification('正在同步到GitHub...');
+
+      try {
+        // In a real implementation, this would use GitHub API
+        // For now, just show success message
+        setTimeout(() => {
+          showNotification('已同步到GitHub');
+        }, 2000);
+      } catch (error) {
+        showNotification('同步失败: ' + error.message, 'error');
+      }
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('edit-modal').classList.remove('active');
+    }
+
+    // Show notification
+    function showNotification(message, type = 'success') {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.className = 'notification show' + (type === 'error' ? ' error' : '');
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

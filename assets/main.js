@@ -10,7 +10,7 @@ class MainApp {
   init() {
     if (this.initialized) return;
 
-    console.log('🚀 Initializing Main App...');
+    console.log('🚀 Initializing Main App with Enhanced Smoothness...');
 
     // Initialize modules in order
     this.initializeModules();
@@ -26,49 +26,49 @@ class MainApp {
 
   async initializeModules() {
     try {
-      // Initialize error handler first
+      // 1. 优先加载错误处理器（保持不变，确保稳定性）
       console.log('🔧 Initializing Error Handler...');
       const { ImageErrorHandler } = await import('./error-handler.js');
       this.modules.set('errorHandler', new ImageErrorHandler());
 
-      // Initialize image optimizer
-      console.log('🖼️ Initializing Image Optimizer...');
-      const { ImageOptimizer, LazyLoadingEnhancer } = await import('./image-optimizer.js');
-      const imageOptimizer = new ImageOptimizer();
+      console.log('📦 Bundling core animations and assets concurrently...');
+
+      // 2. 核心动效与核心优化模块改用【并行加载】，极大缩短首屏白屏和脚本滞后时间
+      const [imgOptModule, imgSysModule, gridSysModule] = await Promise.all([
+        import('./image-optimizer.js'),
+        import('./image-system.js'),
+        import('./grid-system.js')
+      ]);
+
+      // 初始化图片优化
+      const imageOptimizer = new imgOptModule.ImageOptimizer();
       this.modules.set('imageOptimizer', imageOptimizer);
 
-      // Initialize lazy loading
-      const lazyLoading = new LazyLoadingEnhancer(imageOptimizer);
+      const lazyLoading = new imgOptModule.LazyLoadingEnhancer(imageOptimizer);
       document.querySelectorAll('img[loading="lazy"]').forEach(img => {
         lazyLoading.observe(img);
       });
 
-      // Initialize image system
-      console.log('🎨 Initializing Image System...');
-      const { ImageSystem, EnhancedParallax, ImageLoadingIndicator } = await import('./image-system.js');
-      const imageSystem = new ImageSystem();
-      const parallax = new EnhancedParallax(imageSystem);
-      const loadingIndicator = new ImageLoadingIndicator(imageSystem);
+      // 初始化图片系统与视差
+      const imageSystem = new imgSysModule.ImageSystem();
+      const parallax = new imgSysModule.EnhancedParallax(imageSystem);
+      const loadingIndicator = new imgSysModule.ImageLoadingIndicator(imageSystem);
       this.modules.set('imageSystem', imageSystem);
 
-      // Initialize grid system
-      console.log('📐 Initializing Grid System...');
-      const { ResponsiveGridSystem, CardEnhancer } = await import('./grid-system.js');
-      const gridSystem = new ResponsiveGridSystem();
-      const cardEnhancer = new CardEnhancer(gridSystem);
+      // 初始化网格系统与高级卡片增强
+      const gridSystem = new gridSysModule.ResponsiveGridSystem();
+      const cardEnhancer = new gridSysModule.CardEnhancer(gridSystem);
       this.modules.set('gridSystem', gridSystem);
 
-      // Initialize original modules
-      console.log('🖱️ Initializing Original Modules...');
-
-      // Dynamically load and initialize original modules
+      // 3. 并行加载并立刻激活原生的滚动、鼠标及导航动效，防止用户滚动时动效未就绪
+      console.log('🖱️ Injecting Fluid Interactive Modules...');
+      
       try {
-        // Load script.js dynamically if needed
         if (typeof CursorSystem === 'undefined') {
           await import('./script.js');
         }
 
-        // Check and initialize classes
+        // 收集所有核心动效实例
         if (typeof CursorSystem !== 'undefined') {
           this.modules.set('cursor', new CursorSystem());
         }
@@ -89,11 +89,18 @@ class MainApp {
           this.modules.set('projectHandler', new ProjectPageHandler());
         }
       } catch (error) {
-        console.error('Failed to load original modules:', error);
+        console.error('Failed to load dynamic interaction modules:', error);
       }
 
-      // Add loaded class for smooth transitions
-      document.body.classList.add('loaded');
+      // 4. 精细控制首屏进场时机：给浏览器留出 50ms 渲染帧，再执行淡入，确保动效丝滑
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          document.body.classList.add('loaded');
+          
+          // 触发一个全局事件，通知诸如 ScrollAnimations 等模块刷新它们的位置计算
+          window.dispatchEvent(new Event('resize'));
+        }, 50);
+      });
 
     } catch (error) {
       console.error('❌ Failed to initialize modules:', error);
@@ -101,18 +108,15 @@ class MainApp {
   }
 
   setupGlobalErrorHandling() {
-    // Handle uncaught errors
     window.addEventListener('error', (event) => {
       console.error('Global error:', event.error);
     });
 
-    // Handle unhandled promise rejections
     window.addEventListener('unhandledrejection', (event) => {
       console.error('Unhandled promise rejection:', event.reason);
     });
   }
 
-  // Get module instance
   getModule(name) {
     return this.modules.get(name);
   }
@@ -121,17 +125,12 @@ class MainApp {
 // Initialize when DOM is ready
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    // Start initialization
     const app = new MainApp();
-
-    // Make globally available for debugging
     window.App = app;
-
     console.log('📊 Module count:', app.modules.size);
   });
 }
 
-// Export for module systems
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { MainApp };
 }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Test</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    body {
+      padding: 2rem;
+    }
+    .test-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .test-item {
+      margin: 2rem 0;
+      padding: 1rem;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+    .test-img {
+      max-width: 100%;
+      height: auto;
+    }
+    .status {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    .status.success {
+      background: #4caf50;
+      color: white;
+    }
+    .status.error {
+      background: #f44336;
+      color: white;
+    }
+    .status.loading {
+      background: #ff9800;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>Image Test Page</h1>
+
+    <div class="test-item">
+      <h2>Test Image 1</h2>
+      <img
+        id="test1"
+        src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png"
+        alt="Test Image 1"
+        loading="lazy"
+        class="test-img">
+      <div id="status1" class="status">Testing...</div>
+    </div>
+
+    <div class="test-item">
+      <h2>Test Image 2</h2>
+      <img
+        id="test2"
+        src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png"
+        alt="Test Image 2"
+        loading="lazy"
+        class="test-img">
+      <div id="status2" class="status">Testing...</div>
+    </div>
+
+    <div class="test-item">
+      <h2>Test Image 3 (Invalid)</h2>
+      <img
+        id="test3"
+        src="https://invalid-url/image.jpg"
+        alt="Test Image 3"
+        loading="lazy"
+        class="test-img">
+      <div id="status3" class="status">Testing...</div>
+    </div>
+  </div>
+
+  <script src="assets/error-handler.js"></script>
+  <script>
+    // Test image loading
+    document.addEventListener('DOMContentLoaded', () => {
+      const testImages = [
+        { id: 'test1', statusId: 'status1' },
+        { id: 'test2', statusId: 'status2' },
+        { id: 'test3', statusId: 'status3' }
+      ];
+
+      testImages.forEach(({ id, statusId }) => {
+        const img = document.getElementById(id);
+        const status = document.getElementById(statusId);
+
+        img.addEventListener('load', () => {
+          status.textContent = '✅ Image loaded successfully';
+          status.className = 'status success';
+        });
+
+        img.addEventListener('error', () => {
+          status.textContent = '❌ Image failed to load';
+          status.className = 'status error';
+        });
+
+        img.addEventListener('loadstart', () => {
+          status.textContent = '⏳ Loading...';
+          status.className = 'status loading';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

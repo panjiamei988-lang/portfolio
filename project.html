@@ -3,60 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Study</title>
+<title>Case Study - Product Designer</title>
 <link rel="stylesheet" href="assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="project-page">
+  <!-- NAVIGATION -->
+  <nav class="nav-main">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">← Portfolio</a>
+    </div>
+  </nav>
 
-<div class="hero-bg"></div>
+  <!-- SCROLL-DRIVEN SECTIONS -->
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html">← Back</a>
-</nav>
+  <!-- HERO SECTION -->
+  <section class="case-hero" data-section="hero">
+    <div class="case-content">
+      <h1 id="projectTitle">Project Title</h1>
+      <h2 id="projectSubtitle">Project Subtitle</h2>
+      <img id="projectHeroImage" src="" alt="Project hero image" class="project-image">
+    </div>
+  </section>
 
-<!-- HERO -->
-<section class="case-hero">
+  <!-- PROBLEM SECTION -->
+  <section class="case-section" data-section="problem">
+    <div class="case-content">
+      <h2>Problem Statement</h2>
+      <div id="problemContent" class="case-text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      </div>
+    </div>
+  </section>
 
-  <h1 id="title">Loading...</h1>
-  <h2 id="subtitle"></h2>
+  <!-- INSIGHT SECTION -->
+  <section class="case-section" data-section="insight">
+    <div class="case-content">
+      <h2>Key Insights</h2>
+      <div id="insightContent" class="case-text">
+        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer.</p>
+      </div>
+    </div>
+  </section>
 
-  <img id="heroImg">
+  <!-- PROCESS TIMELINE -->
+  <section class="case-section timeline" data-section="process">
+    <div class="case-content">
+      <h2>Design Process</h2>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="timeline-marker">01</div>
+          <div class="timeline-content">
+            <h3>Research</h3>
+            <p>Understanding user needs and market landscape</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">02</div>
+          <div class="timeline-content">
+            <h3>Concept</h3>
+            <p>Developing initial concepts and solutions</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">03</div>
+          <div class="timeline-content">
+            <h3>Prototype</h3>
+            <p>Building interactive prototypes for testing</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">04</div>
+          <div class="timeline-content">
+            <h3>Testing</h3>
+            <p>User testing and iteration</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <!-- FINAL RESULT SECTION -->
+  <section class="case-section" data-section="final">
+    <div class="case-content">
+      <h2>Final Solution</h2>
+      <div id="finalContent">
+        <img id="finalResultImage" src="" alt="Final design result" class="project-image">
+        <div class="final-description">
+          <p>The final solution represents a comprehensive approach to addressing the identified challenges through thoughtful design and user-centered methodologies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- STORY -->
-<section class="case-section">
-  <h2>Overview</h2>
-  <p id="overview"></p>
-</section>
+  <!-- REFLECTION SECTION -->
+  <section class="case-section" data-section="reflection">
+    <div class="case-content">
+      <h2>Reflection & Learnings</h2>
+      <div id="reflectionContent" class="case-text">
+        <p>This project provided valuable insights into the importance of user-centered design and iterative development. Key learnings include...</p>
+      </div>
+    </div>
+  </section>
 
-<section class="case-section">
-  <h2>Problem</h2>
-  <p id="problem"></p>
-</section>
+  <script type="module" src="assets/script.js"></script>
+  <script>
+    // Case Study Specific JavaScript
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('id');
 
-<section class="case-section">
-  <h2>Insight</h2>
-  <p id="insight"></p>
-</section>
+      // Load project data based on ID
+      const projectData = {
+        eye: {
+          title: "Eye Massager",
+          subtitle: "Smart Wellness Design",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
+          problem: "Traditional eye massagers lack personalization and effective user experience.",
+          insight: "Users need a personalized massage experience that adapts to their specific needs.",
+          process: [
+            { step: "01", title: "Research", desc: "User interviews and market analysis" },
+            { step: "02", title: "Concept", desc: "Customizable massage profiles" },
+            { step: "03", title: "Prototype", desc: "Interactive pressure mapping system" },
+            { step: "04", title: "Testing", desc: "User feedback sessions" }
+          ],
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
+          reflection: "The success of this project demonstrated the importance of user-centered design in wellness technology."
+        },
+        tesla: {
+          title: "Tesla Camera",
+          subtitle: "Autonomous Vehicle Vision",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
+          problem: "Camera systems in autonomous vehicles need intuitive interfaces for monitoring.",
+          insight: "Drivers need clear visual feedback without overwhelming information.",
+          process: [
+            { step: "01", title: "Research", desc: "Driver behavior studies" },
+            { step: "02", title: "Concept", desc: "Minimalist interface design" },
+            { step: "03", title: "Prototype", desc: "AR-enhanced visualization" },
+            { step: "04", title: "Testing", desc: "Simulated driving scenarios" }
+          ],
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
+          reflection: "Balancing functionality with simplicity was key to this project's success."
+        },
+        nebulizer: {
+          title: "Child Nebulizer",
+          subtitle: "Pediatric Medical Device",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
+          problem: "Children fear and resist traditional nebulizer treatments.",
+          insight: "Making medical devices friendly and engaging improves treatment compliance.",
+          process: [
+            { step: "01", title: "Research", desc: "Child psychology studies" },
+            { step: "02", title: "Concept", desc: "Gamified treatment experience" },
+            { step: "03", title: "Prototype", desc: "Interactive storytelling interface" },
+            { step: "04", title: "Testing", desc: "Clinical trials with children" }
+          ],
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
+          reflection: "This project showed how design can make medical treatments less intimidating for children."
+        },
+        rescue: {
+          title: "Rescue Vest",
+          subtitle: "Safety Equipment Innovation",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png",
+          problem: "Traditional rescue vests are difficult to don in emergency situations.",
+          insight: "Quick accessibility is critical for life-saving equipment.",
+          process: [
+            { step: "01", title: "Research", desc: "First responder interviews" },
+            { step: "02", title: "Concept", desc: "One-second deployment design" },
+            { step: "03", title: "Prototype", desc: "Rapid-release mechanism" },
+            { step: "04", title: "Testing", desc: "Stress scenario simulations" }
+          ],
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png",
+          reflection: "Speed and reliability were the most important factors in this life-saving design."
+        },
+        rooftop: {
+          title: "Rooftop Tent",
+          subtitle: "Adventure Gear Design",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
+          problem: "Traditional rooftop tents are difficult to set up and take down.",
+          insight: "Adventure enthusiasts want quick and effortless camping experiences.",
+          process: [
+            { step: "01", title: "Research", desc: "Camping enthusiast surveys" },
+            { step: "02", title: "Concept", desc: "Pop-up design mechanism" },
+            { step: "03", title: "Prototype", desc: "Hydraulic lift system" },
+            { step: "04", title: "Testing", desc: "Real-world camping tests" }
+          ],
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
+          reflection: "Innovation in outdoor gear requires understanding the user's entire experience."
+        },
+        exo: {
+          title: "Exoskeleton",
+          subtitle: "Medical Robotics",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png",
+          problem: "Exoskeletons for rehabilitation are bulky and intimidating.",
+          insight: "Medical devices should empower rather than intimidate users.",
+          process: [
+            { step: "01", title: "Research", desc: "Physical therapy studies" },
+            { step: "02", title: "Concept", desc: "Lightweight ergonomic design" },
+            { step: "03", title: "Prototype", desc: "Adaptive support system" },
+            { step: "04", title: "Testing", desc: "Rehabilitation trials" }
+          ],
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png",
+          reflection: "This project demonstrated how thoughtful design can make advanced technology accessible."
+        }
+      };
 
-<section class="case-section">
-  <h2>Process</h2>
-  <p id="process"></p>
-</section>
+      if (projectId && projectData[projectId]) {
+        const project = projectData[projectId];
 
-<section class="case-section">
-  <h2>Final</h2>
-  <img id="finalImg">
-</section>
+        // Update content
+        document.getElementById('projectTitle').textContent = project.title;
+        document.getElementById('projectSubtitle').textContent = project.subtitle;
+        document.getElementById('projectHeroImage').src = project.heroImage;
 
-<section class="case-section">
-  <h2>Reflection</h2>
-  <p id="reflection"></p>
-</section>
+        document.getElementById('problemContent').innerHTML = `<p>${project.problem}</p>`;
+        document.getElementById('insightContent').innerHTML = `<p>${project.insight}</p>`;
 
-<script src="assets/script.js"></script>
+        // Update timeline
+        const timelineHTML = project.process.map(step => `
+          <div class="timeline-item">
+            <div class="timeline-marker">${step.step}</div>
+            <div class="timeline-content">
+              <h3>${step.title}</h3>
+              <p>${step.desc}</p>
+            </div>
+          </div>
+        `).join('');
+        document.querySelector('.timeline-container').innerHTML = timelineHTML;
+
+        document.getElementById('finalResultImage').src = project.finalImage;
+        document.getElementById('reflectionContent').innerHTML = `<p>${project.reflection}</p>`;
+
+        // Update title
+        document.title = `${project.title} - Case Study`;
+      }
+
+      // Initialize scroll animations
+      const sections = document.querySelectorAll('.case-section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(50px)';
+        section.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+        observer.observe(section);
+      });
+    });
+  </script>
 </body>
 </html>

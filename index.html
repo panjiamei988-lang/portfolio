@@ -3,105 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Framer 6.0 Portfolio</title>
+<title>Product Designer Portfolio</title>
+
+<!-- Load Fonts First -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
+
+<!-- Then Load Styles -->
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
+  <!-- NAVIGATION -->
+  <nav class="nav-main">
+    <div class="nav-container">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#works" class="nav-link">Works</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
 
-<div class="hero-bg"></div>
-<div class="noise"></div>
+  <!-- DYNAMIC BACKGROUND -->
+  <div class="fluid-bg"></div>
+  <div class="noise-overlay"></div>
 
-<!-- 🔴 BACKGROUND -->
-<div class="hero-bg"></div>
+  <!-- CURSOR -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-follower"></div>
+  <div class="cursor-text"></div>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
+  <!-- HERO SECTION (ELEVON STYLE) -->
+  <section class="hero" id="about">
+    <div class="hero-content">
+      <h1 class="hero-title">Product Designer</h1>
+      <h2 class="hero-subtitle">User-Centered Design</h2>
+      <h3 class="hero-tagline">Framer Portfolio</h3>
+    </div>
+  </section>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-left">PAN PORTFOLIO</div>
-  <div class="nav-right">
-    <a href="#about">About</a>
-    <a href="#works">Works</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  <!-- WORKS SECTION (VERTICAL STYLE) -->
+  <section class="works" id="works">
+    <div class="works-container">
+      <!-- Project 1 -->
+      <article class="work-item" data-project="eye">
+        <div class="work-image-wrapper">
+          <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png"
+               alt="Eye Massager - Smart wellness device"
+               class="work-image"
+               loading="lazy">
+        </div>
+        <div class="work-content">
+          <h3 class="work-title">Eye Massager</h3>
+          <p class="work-category">Wellness Design</p>
+        </div>
+      </article>
 
-<!-- HERO -->
-<section class="hero">
+      <!-- Project 2 -->
+      <article class="work-item" data-project="tesla">
+        <div class="work-content">
+          <h3 class="work-title">Tesla Camera</h3>
+          <p class="work-category">Automotive Design</p>
+        </div>
+        <div class="work-image-wrapper">
+          <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png"
+               alt="Tesla Camera - Autonomous vehicle camera system"
+               class="work-image"
+               loading="lazy">
+        </div>
+      </article>
 
-  <div class="hero-inner">
+      <!-- Project 3 -->
+      <article class="work-item" data-project="nebulizer">
+        <div class="work-image-wrapper">
+          <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png"
+               alt="Child Nebulizer - Pediatric medical device"
+               class="work-image"
+               loading="lazy">
+        </div>
+        <div class="work-content">
+          <h3 class="work-title">Child Nebulizer</h3>
+          <p class="work-category">Medical Design</p>
+        </div>
+      </article>
 
-    <h1 class="h1">Product Designer</h1>
+      <!-- Project 4 -->
+      <article class="work-item" data-project="rescue">
+        <div class="work-content">
+          <h3 class="work-title">Rescue Vest</h3>
+          <p class="work-category">Safety Equipment</p>
+        </div>
+        <div class="work-image-wrapper">
+          <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png"
+               alt="Rescue Vest - Safety equipment"
+               class="work-image"
+               loading="lazy">
+        </div>
+      </article>
 
-    <h2 class="h2">User-Centered Design</h2>
+      <!-- Project 5 -->
+      <article class="work-item" data-project="rooftop">
+        <div class="work-image-wrapper">
+          <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png"
+               alt="Rooftop Tent - Adventure gear"
+               class="work-image"
+               loading="lazy">
+        </div>
+        <div class="work-content">
+          <h3 class="work-title">Rooftop Tent</h3>
+          <p class="work-category">Adventure Gear</p>
+        </div>
+      </article>
 
-    <h3 class="h3">Framer 6.0 System</h3>
+      <!-- Project 6 -->
+      <article class="work-item" data-project="exo">
+        <div class="work-content">
+          <h3 class="work-title">Exoskeleton</h3>
+          <p class="work-category">Medical Robotics</p>
+        </div>
+        <div class="work-image-wrapper">
+          <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png"
+               alt="Exoskeleton - Medical robotics"
+               class="work-image"
+               loading="lazy">
+        </div>
+      </article>
+    </div>
+  </section>
 
-    <p class="hero-sub">
-      Interaction · Motion · Spatial Thinking · System Design
-    </p>
+  <!-- SKILLS SECTION -->
+  <section class="skills" id="skills">
+    <div class="skills-container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">UI/UX Design</div>
+        <div class="skill-item">Prototyping</div>
+        <div class="skill-item">User Research</div>
+        <div class="skill-item">Interaction Design</div>
+        <div class="skill-item">Design Systems</div>
+        <div class="skill-item">Framer</div>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-text">Let's create something amazing together</p>
+      <a href="mailto:contact@example.com" class="contact-link">contact@example.com</a>
+    </div>
+  </section>
 
-</section>
-
-<!-- WORKS -->
-<section class="works" id="works">
-
-<div class="container vlist">
-
-  <a class="vitem" href="project.html?id=eye">
-    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png">
-    <div class="title">Eye Massager</div>
-  </a>
-
-  <a class="vitem" href="project.html?id=tesla">
-    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png">
-    <div class="title">Tesla Camera</div>
-  </a>
-
-  <a class="vitem" href="project.html?id=nebulizer">
-    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png">
-    <div class="title">Child Nebulizer</div>
-  </a>
-
-  <a class="vitem" href="project.html?id=rescue">
-    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png">
-    <div class="title">Rescue Vest</div>
-  </a>
-
-  <a class="vitem" href="project.html?id=rooftop">
-    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png">
-    <div class="title">Rooftop Tent</div>
-  </a>
-
-  <a class="vitem" href="project.html?id=exo">
-    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png">
-    <div class="title">Exoskeleton</div>
-  </a>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="container">
-    <h2>About</h2>
-    <p>Product designer focused on systems, interaction, and spatial experience.</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="container">
-    <h2>Contact</h2>
-    <p>Email: 123@example.com</p>
-  </div>
-</section>
-
-<script src="assets/script.js"></script>
+  <script src="assets/script.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/simple-fix.js"></script>
+  <link rel="stylesheet" href="assets/basic-fix.css">
 </body>
 </html>

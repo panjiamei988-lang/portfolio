@@ -380,6 +380,7 @@ img[data-placeholder] {
   transform: translateY(100px);
   position: relative;
   overflow: visible;
+  will-change: transform, opacity;
 }
 
 .work-item:nth-child(odd) .work-image-wrapper {

@@ -1,0 +1,56 @@
+/* ==================== ULTIMATE FIX - 确保所有内容显示 ==================== */
+
+/* 强制显示hero标题 */
+.hero-title {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 强制显示hero副标题 */
+.hero-subtitle {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 强制显示hero标语 */
+.hero-tagline {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 强制显示所有work items */
+.work-item {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 强制显示技能区域 */
+.skills-grid {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 确保图片可见 */
+.work-image, img {
+  opacity: 1 !important;
+}
+
+/* 确保已加载的图片状态 */
+img.loaded {
+  opacity: 1 !important;
+}
+
+/* 确保section标题可见 */
+.section-title {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 移除任何可能的隐藏动画 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

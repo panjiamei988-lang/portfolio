@@ -709,3 +709,551 @@ img[data-placeholder] {
   width: 100%;
   height: 100%;
 }
+
+/* ==================== 首页首屏人物背景特制样式（升级版） ==================== */
+
+/* 1. 确保首屏容器具备定位基准，且超出部分隐藏 */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 确保文字内容在图片上方 */
+.hero-content {
+  position: relative;
+  z-index: 2; 
+}
+
+/* 2. 背景图片核心样式：置于底层、全屏铺满、无模糊 */
+.hero-bg-character {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* 保证图片等比例自适应铺满整屏 */
+  z-index: 1;           /* 放在文字的下面 */
+  pointer-events: none; /* 禁用图片的鼠标事件，防止影响文字选中 */
+  
+  /* ── 删除了 filter: blur(...)，人物不再模糊 ── */
+  filter: brightness(0.7); /* 略微调暗（降到70%亮度），确保白色大字看得清。如果不需要调暗，可以改为 brightness(1) */
+
+  /* 3. 核心：加入高级滚动绑定动效（Scroll-Driven Animation） */
+  /* 指定动画名称，设置时间为 linear 线性 */
+  animation: heroScrollExit linear forwards;
+  /* 关键：将动画与页面滚动绑定（部分旧浏览器不支持，下方有兼容兜底） */
+  animation-timeline: scroll(root);
+  /* 动画起止范围：从页面顶部滚动到离开第一屏(100vh)的过程 */
+  animation-range: 0 100vh;
+}
+
+/* 4. 滚动动效设计：上滑时图片流畅地放大、往上推移并渐渐淡出 */
+@keyframes heroScrollExit {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15vh) scale(1.08); /* 流畅往上平移 15% 屏幕高度，并轻微放大，产生立体视差感 */
+    opacity: 0; /* 刚好滚完第一屏时，完美淡出隐形，不影响第二页的内容 */
+  }
+}
+
+/* 5. 兼容性兜底（可选）：如果是不支持滚动动画的旧版浏览器，自动切换为标准的 3 秒开场渐显动效 */
+@supports not (animation-timeline: scroll()) {
+  .hero-bg-character {
+    animation: heroBgFadeIn 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+}
+@keyframes heroBgFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==================== 首页尾屏 Contact 背景与 5% 磨砂质感样式 ==================== */
+
+/* 1. 强制 Contact 区域占满整整一屏，并做全屏居中对齐 */
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: #000;            /* 兜底纯黑背景 */
+  
+  /* ── 核心修改：让尾屏完美占满整整一页 ── */
+  min-height: 100vh;           /* 强制高度为 100% 视口高度 */
+  width: 100%;                 /* 宽度占满 */
+  margin: 0;                   /* 消除外边距干扰 */
+  padding: 0;                  /* 消除内边距干扰 */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* 确保联系方式的文字内容和点击链接永远在最上层 */
+.contact-container {
+  position: relative;
+  z-index: 3; 
+}
+
+/* 2. 尾屏背景图：绝对定位，无死角铺满整屏 */
+.contact-bg-character {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* 保证图片等比例自适应裁剪铺满，绝对不留白、不拉伸 */
+  z-index: 1;                  /* 位于最底层 */
+  pointer-events: none;        /* 禁用鼠标事件，防止干扰邮箱复制/点击 */
+}
+
+/* 3. 调整遮罩：精简至 5% 的微弱磨砂质感（夹在图片和文字中间） */
+.contact-blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;                  /* 夹在图片(z-index:1)和文字(z-index:3)中间 */
+  pointer-events: none;
+
+  /* ── 5% 微弱磨砂核心实现 ── */
+  /* 将原本的 12px 降低到 2px，实现若隐若现的高清透视磨砂感 */
+  backdrop-filter: blur(2px); 
+  -webkit-backdrop-filter: blur(2px); /* 兼容 Safari 浏览器 */
+  
+  /* 稍微叠加一层超低浓度的黑色遮罩，保护白色文字的识别度，同时保持画面的通透感 */
+  background: rgba(0, 0, 0, 0.45); 
+}
+
+/* ==================== 导航与标签高级点击/悬停动效（高定弹性版） ==================== */
+
+/* 1. 为所有可点击的导航链接和标签初始化状态 */
+.nav-link, .skill-item, .contact-link {
+  position: relative;
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: inline-block; /* 必须是 inline-block，扭动动画的 transform 才会生效 */
+  text-decoration: none;
+}
+
+/* 2. 悬停与点击时的文字：由刺眼红变成极简纯白，并触发“液态扭动”动画 */
+.nav-link:hover, .nav-link:active,
+.skill-item:hover, .skill-item:active,
+.contact-link:hover, .contact-link:active {
+  color: #ffffff !important; /* 统一改为高亮纯白，非常克制高级 */
+  
+  /* 触发文字扭动动效：持续0.6秒，使用弹性贝塞尔曲线 */
+  animation: textWiggle 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3. 替换掉丑陋的红色外框 ── 改用优雅的底层“流光极细线” */
+/* 先清除可能自带的生硬 border */
+.nav-link, .skill-item, .contact-link {
+  border: none !important; 
+}
+
+/* 用伪元素制作一条会从中间向两端延展的 1px 白色极细线 */
+.nav-link::after, .skill-item::after, .contact-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; /* 距离文字底部4像素 */
+  left: 0;
+  width: 100%;
+  height: 1px; /* 极细线，极具精致感 */
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent); /* 渐变流光线 */
+  transform: scaleX(0); /* 默认不可见 */
+  transform-origin: center; /* 从中间向两端展开 */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 当悬停或点击时，线条丝滑展开 */
+.nav-link:hover::after, .nav-link:active::after,
+.skill-item:hover::after, .skill-item:active::after,
+.contact-link:hover::after, .contact-link:active::after {
+  transform: scaleX(1);
+}
+
+
+/* ==================== KEYFRAMES 核心：文字液态扭动算法 ==================== */
+@keyframes textWiggle {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    /* 水平拉伸，垂直压扁，往左微倾 ── 模拟受力挤压 */
+    transform: scale(1.15, 0.85) rotate(-3deg);
+  }
+  45% {
+    /* 垂直拉伸，水平反弹，往右微倾 ── 产生回弹扭动 */
+    transform: scale(0.92, 1.08) rotate(3deg);
+  }
+  70% {
+    /* 再次微弱回弹 */
+    transform: scale(1.04, 0.96) rotate(-1deg);
+  }
+  100% {
+    /* 完美恢复原状 */
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ==================== 导航与标签高级动效（快速上下移 + 纯黑邮箱填充） ==================== */
+
+/* 1. 为可点击元素（包括邮箱）初始化状态，确保平滑过渡 */
+.nav-link, .skill-item, .contact-link {
+  position: relative;
+  display: inline-block; /* 必须是 inline-block，上下位移的 transform 才会生效 */
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 2. 核心修改：鼠标靠近悬停（Hover）及点击（Active）时，文字快速上下移动 */
+.nav-link:hover, .nav-link:active,
+.skill-item:hover, .skill-item:active,
+.contact-link:hover, .contact-link:active {
+  color: #ffffff !important; /* 悬停点击时文字全部保持高级纯白 */
+  
+  /* 触发快速上下跳动动画：时常压缩至 0.25 秒，呈现干净利落的机械/数字感 */
+  animation: fastJolt 0.25s cubic-bezier(0.25, 1, 0.36, 1) forwards;
+}
+
+/* 3. 彻底干掉丑陋的红色填充！ ── 将邮箱链接框改为纯黑质感填充 */
+.contact-link {
+  /* 确保你在之前的代码里如果有 border-color: red 或 background: red，这里进行重置 */
+  border: 1px solid rgba(255, 255, 255, 0.2) !important; /* 改为极细半透明白边框 */
+  background-color: transparent; 
+  padding: 12px 24px; /* 保证框框有足够的工业呼吸留白 */
+  border-radius: 4px; /* 严谨的微圆角 */
+}
+
+/* 当鼠标靠近、点击邮箱框框时，绝对不要红色，变为黑色填充 */
+.contact-link:hover, .contact-link:active {
+  background-color: rgba(0, 0, 0, 0.85) !important; /* 高级半透明黑色填充，能隐约透出底层尾图 */
+  border-color: rgba(255, 255, 255, 0.6) !important; /* 边框微微一亮 */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* 赋予黑框一点深邃的悬浮阴影 */
+}
+
+/* 4. 底部的流光极细线（可选保留）：只留给导航和技能标签，邮箱框本身不需要底线 */
+.nav-link::after, .skill-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after, .skill-item:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* ==================== KEYFRAMES 核心：快速上下移快闪算法 ==================== */
+@keyframes fastJolt {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-6px); /* 鼠标一靠近，字迅速向上拔起 6 像素 */
+  }
+  65% {
+    transform: translateY(4px);  /* 紧接着猛烈下坠到基准线下方 4 像素 */
+  }
+  100% {
+    transform: translateY(-2px); /* 最终轻微回弹并悬停在上方 2 像素处，静止等待点击 */
+  }
+}
+
+/* ==================== 技能标签无限循环横向跑马灯（从左往右） ==================== */
+
+/* 1. 跑马灯外层包裹盒：负责限制宽度并隐藏超出屏幕的标签 */
+.skills-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+  /* 在左右两侧加上现代网页常用的渐变半透明遮罩，让标签进出屏幕时自然淡入淡出，更有高级感 */
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* 2. 运动轨道：把两组标签水平并排放置 */
+.skills-track {
+  display: flex;
+  width: max-content; /* 宽度由内容无限撑开 */
+  gap: 20px;          /* 两组之间的间距 */
+  
+  /* 触发无限循环动画：30秒滚完一轮，线性匀速，无限循环 */
+  animation: marqueeRight 30s linear infinite;
+}
+
+/* 3. 单个技能组（包含13个标签） */
+.skills-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px; /* 每个标签之间的呼吸间距 */
+}
+
+/* 优化：当鼠标悬停到整个技能区域时，滚动会稍微减速或暂停，方便用户看清或点击 */
+.skills-track:hover {
+  animation-play-state: paused; /* 鼠标放上去暂停，拿开继续动。如果不想要这个效果，把这三行删掉即可 */
+}
+
+
+/* ==================== KEYFRAMES 核心：从左往右无缝衔接算法 ==================== */
+@keyframes marqueeRight {
+  0% {
+    /* 从左边负的一半（正好隐藏第一组）的位置开始 */
+    transform: translateX(calc(-50% - 10px));
+  }
+  100% {
+    /* 顺畅地向右移动到 0 的位置，此时第二组完美代替第一组，实现视觉欺骗 */
+    transform: translateX(0);
+  }
+}
+
+/* ==================== 双行全宽技能跑马灯（字体放大版） ==================== */
+
+/* 1. 全宽容器：打破原本版心的两侧限制，撑满整个屏幕边缘 */
+.skills-container-fluid {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+/* 确保标题依然有左边距（可根据你的网站版心微调，这里暂定10%） */
+.skills-container-fluid .section-title {
+  padding-left: 10%;
+  margin-bottom: 40px;
+}
+
+/* 2. 跑马灯包裹层 */
+.skills-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 14px 0; /* 上下行间距 */
+  
+  /* 现代高级渐变羽化裁剪：让标签在两端边缘自然淡入淡出 */
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* 3. 核心：大幅放大字体与卡片间距 */
+.skills-group .skill-item {
+  font-size: 2.5rem !important; /* ── 字体显著放大（原本约为 1.1rem） ── */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  padding: 16px 36px !important; /* 增大卡片的内边距，让盒子更大气 */
+  white-space: nowrap;
+}
+
+/* 4. 两条轨道的初始布局与通用动效设定 */
+.skills-track {
+  display: flex;
+  width: max-content;
+  gap: 30px; /* 标签之间的间距 */
+}
+
+/* 悬停时整个大区域稍微减速，保证阅读体验 */
+.skills-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── 轨道一：从左往右移 ── */
+.track-right {
+  animation: marqueeToRight 25s linear infinite;
+}
+
+/* ── 轨道二：从右往左移 ── */
+.track-left {
+  animation: marqueeToLeft 25s linear infinite;
+}
+
+
+/* ==================== KEYFRAMES 核心：双向运动算法 ==================== */
+
+/* 从左往右移动（第一行） */
+@keyframes marqueeToRight {
+  0% {
+    transform: translateX(calc(-50% - 15px));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 从右往左移动（第二行） */
+@keyframes marqueeToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 15px));
+  }
+}
+
+/* ==================== 技能板块：全屏正中央排版（大标题居中 + 全宽精致小字跑马灯） ==================== */
+
+/* 1. 让整个 Skills 区域强制占满一整屏，并使内部所有内容在视口正中央垂直、水平居中 */
+.skills {
+  width: 100%;
+  min-height: 100vh;           /* 强占一整屏高度 */
+  display: block;              /* 恢复标准流 */
+  position: relative;
+  background: #000;            /* 兜底暗黑背景 */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 2. 中央核心包裹盒：负责将主标题和两行跑马灯在全屏垂直居中 */
+.skills-center-container {
+  width: 100%;
+  
+  /* 精准定位到全屏的垂直正中央 */
+  position: absolute;
+  top: 50%;
+  left: 0;                     /* 左对齐调为0，方便跑马灯撑满全宽 */
+  transform: translateY(-50%); /* 仅在垂直方向居中 */
+  
+  display: block;
+  text-align: center; 
+}
+
+/* 3. 主标题 "Skills" 样式：死死锁定在屏幕的水平正中央 */
+.skills-center-container .section-title {
+  font-size: 3.2rem !important; /* 保持大气的标题字号 */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 auto 35px auto !important; /* 居中，并向下方的跑马灯留出舒适的呼吸间距 */
+  text-align: center;
+  width: 100%;
+  color: #ffffff;
+}
+
+/* 4. ✨ 跑马灯外壳：打破原本局限，强制撑满屏幕最左端到最右端 (100vw) */
+.skills-marquee-wrapper {
+  overflow: hidden;
+  width: 100vw;                /* ── 撑满整个屏幕宽度 ── */
+  position: relative;
+  padding: 8px 0;              /* 稍微收紧行与行之间的精致间距 */
+  margin: 0 auto;
+  
+  /* 左右边缘半透明羽化遮罩，让跑马灯在最左最右的屏幕边缘高档地淡入淡出 */
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* 5. 跑马灯字号：保持你满意的精致小字号比例 */
+.skills-group .skill-item {
+  font-size: 1.45rem !important; /* ── 保持精致紧凑的字号 ── */
+  font-weight: 500;             
+  letter-spacing: 0em;
+  padding: 8px 20px !important;  
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7); /* 使用 70% 的白，衬托纯白的标题 */
+}
+
+/* 6. 两条运动轨道的设定 */
+.skills-track {
+  display: flex;
+  width: max-content;
+  gap: 24px;                    /* 词组之间的横向间距 */
+}
+
+/* 鼠标悬停时暂停滚动 */
+.skills-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── 轨道一：从最左到最右，不间断滚动 ── */
+.track-right {
+  animation: marqueeCenterToRightMini 25s linear infinite;
+}
+
+/* ── 轨道二：从最右到最左，不间断滚动 ── */
+.track-left {
+  animation: marqueeCenterToLeftMini 25s linear infinite;
+}
+
+
+/* ==================== KEYFRAMES 核心（完美匹配 4 组拼接的循环算法） ==================== */
+
+/* 从左往右移动（第一行） */
+@keyframes marqueeCenterToRightMini {
+  0% {
+    /* 4组内容时，完美的视觉平移中转点是 -50%（即移动两组的距离） */
+    transform: translateX(-50%); 
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 从右往左移动（第二行） */
+@keyframes marqueeCenterToLeftMini {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==================== 全站高级流光级联进场核心样式 ==================== */
+
+/* 1. 优化 Lenis 惯性滚动下浏览器的平滑行为，确保不冲突 */
+html.lenis {
+  height: auto;
+}
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* 2. 元素进场前的隐形初始化状态（适合作品集卡片、技能盒子、尾页文案） */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(50px) scale(0.97); /* 默认埋在下方，且微微内敛缩小 */
+  filter: blur(4px);                       /* 微弱镜头失焦感 */
+  transition: 
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;   /* 强制硬件加速，绝不卡顿 */
+}
+
+/* 3. 当滑到当前位置时，由 JS 注入 .active 类名，触发好莱坞式丝滑苏醒 */
+.reveal-element.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);       /* 完美挺拔升起并复原大小 */
+  filter: blur(0);                         /* 瞬间清晰聚焦 */
+}
+
+/* 4. 灵魂错落：利用 CSS 级联选择器，让连续出现的卡片产生时间差（Stagger Effect） */
+/* 当一排作品同时露头时，第2、3、4个卡片会依次慢一点点飘出，这就是 Yaroslav 极高级的视觉韵律 */
+.works-container .reveal-element:nth-child(2n) {
+  transition-delay: 0.15s; 
+}
+.works-container .reveal-element:nth-child(3n) {
+  transition-delay: 0.3s;
+}
+

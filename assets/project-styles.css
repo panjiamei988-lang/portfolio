@@ -1,269 +1,331 @@
-/* ==================== PROJECT PAGE STYLES ==================== */
+/* ==================== 电影级叠层详情页重构样式（全净化纯白版） ==================== */
 
-/* Case Study Hero Section */
-.case-hero {
-  min-height: 100vh;
+/* 1. 基础全局规范 */
+.project-page {
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 2. 强制整屏级骨架（Yaroslav 核心版式） */
+.premium-section {
+  width: 100%;
+  min-height: 100vh;           /* 每一章雷打不动强占一整屏 */
   display: flex;
-  align-items: center;      /* 垂直居中 */
-  justify-content: center;   /* 水平居中 */
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at center, rgba(255, 42, 42, 0.1) 0%, transparent 50%);
-  padding: var(--space-4xl) 0;
   box-sizing: border-box;
+  padding: 80px 6%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* 极微弱的章节分割线 */
 }
 
-/* 专门针对 Hero 第一屏文字容器的强力居中限制，避免与下方 case-section 的同名类冲突 */
-.case-hero .case-content {
+/* 3. 各种高定画幅包裹盒 */
+.premium-container {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* 黄金非对称左右分割 */
+  gap: 60px;
+  align-items: center;
+}
+
+.premium-container-split {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.premium-container-split.reversed {
+  direction: rtl; /* 左右镜像翻转版式，打破死板 */
+}
+.premium-container-split.reversed .info-meta-block {
+  direction: ltr;
+}
+
+.premium-container-center {
+  max-width: 850px;
+  text-align: center;
+  width: 100%;
+}
+
+.premium-container-vertical {
+  width: 100%;
+  max-width: 1300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  max-width: 1200px;
-  padding: 0 2rem;
-  margin: auto;             /* 终极垂直居中保障 */
+  gap: 50px;
 }
 
+.premium-container-final {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* 4. 文本层级高定细则（抹除一切红色渐变） */
+.section-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.premium-section h2 {
+  font-family: 'PP Editorial New', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-spacing: 1.1;
+  color: #ffffff !important;
+  margin: 0 0 30px 0;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* 首屏特殊大标题 */
 #projectTitle {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-family: 'PP Editorial New', serif;
+  font-size: 5.5rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;         /* 略微放开行高，防止大写字母顶端被裁切 */
-  margin-bottom: 1.5rem;
-  background: linear-gradient(to right, var(--color-text-primary), var(--color-accent-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  line-height: 1.05;
+  margin: 0 0 20px 0;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
-
 #projectSubtitle {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--color-text-secondary);
-  margin-bottom: 0;         /* 移除底部过大的外边距，完全交由父级容器弹性居中 */
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin: 0;
 }
 
-.project-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* 专业长文本排版 */
+.case-text-premium p {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 400;
 }
 
-.project-image:hover {
-  transform: scale(1.02);
-}
-
-/* Case Study Sections */
-.case-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: var(--space-6xl) var(--space-xl);
-  position: relative;
-}
-
-.case-section:nth-child(even) {
-  background: rgba(255, 42, 42, 0.02);
-}
-
-.case-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.case-section h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  margin-bottom: var(--space-3xl);
-  color: var(--color-text-primary);
-}
-
-.case-text {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--color-text-primary);
-  background: rgba(255, 255, 255, 0.05);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-}
-
-/* Timeline Styles */
-.timeline {
-  position: relative;
-  padding: var(--space-4xl) 0;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--color-accent-primary), transparent);
-  transform: translateX(-50%);
-}
-
-.timeline-container {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.timeline-item {
-  position: relative;
-  padding: var(--space-2xl);
-  margin-bottom: var(--space-4xl);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.timeline-item:nth-child(odd) {
-  margin-left: 0;
-  margin-right: 50%;
-  padding-right: calc(50% + var(--space-2xl));
-}
-
-.timeline-item:nth-child(even) {
-  margin-left: 50%;
-  padding-left: calc(50% + var(--space-2xl));
-}
-
-.timeline-marker {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background: var(--color-accent-primary);
-  color: var(--color-bg-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.125rem;
-  top: var(--space-xl);
-}
-
-.timeline-item:nth-child(odd) .timeline-marker {
-  right: calc(50% - 20px);
-}
-
-.timeline-item:nth-child(even) .timeline-marker {
-  left: calc(50% - 20px);
-}
-
-.timeline-content h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: var(--space-md);
-  color: var(--color-text-primary);
-}
-
-.timeline-content p {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-}
-
-/* Final Result Section */
-#finalContent {
-  text-align: center;
-}
-
-.final-description {
-  margin-top: var(--space-3xl);
-  padding: var(--space-3xl);
-  background: rgba(255, 42, 42, 0.05);
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 42, 42, 0.2);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
-  }
-
-  .timeline-item {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: var(--space-2xl) !important;
-    padding-right: var(--space-2xl) !important;
-    margin-bottom: var(--space-3xl);
-  }
-
-  .timeline-marker {
-    left: 20px !important;
-    right: auto !important;
-  }
-
-  .case-section {
-    padding: var(--space-4xl) var(--space-md);
-  }
-}
-
-/* Loading Animation */
-@keyframes pulse {
-  0% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.6;
-  }
-}
-
-.loading {
-  animation: pulse 1.5s infinite;
-}
-
-/* ==================== TIMELINE TEXT ALIGNMENT FIX ==================== */
-
-/* 1. 拓宽卡片容器：原代码 nth-child(odd) 给右边留了 50% 太多了，限制了内容区 */
-.timeline-item:nth-child(odd) {
-  margin-right: 15%; /* 释放空间，从 50% 缩小到 15% */
-  padding-right: var(--space-2xl) !important;
-}
-
-.timeline-item:nth-child(even) {
-  margin-left: 15%;  /* 释放空间，从 50% 缩小到 15% */
-  padding-left: var(--space-2xl) !important;
-}
-
-/* 2. 控制时间轴内部内容对齐 */
-.timeline-content {
-  max-width: 100% !important;
-  text-align: left !important; /* 工业设计作品集流程说明，左对齐比居中更显严谨秩序 */
-}
-
-/* 3. 让标题（如：背景调研）横向单独成一排 */
-.timeline-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-md);
-  white-space: nowrap; /* 强制不换行 */
-}
-
-/* 4. 让每一句用空格隔开的短句（如：竞品调研、结构分析）各自横向单独成排 */
-.timeline-desc-list {
-  display: flex;
-  flex-direction: column; /* 垂直向下排列 */
-  gap: var(--space-xs);   /* 短句之间的呼吸间距 */
-}
-
-.timeline-desc-list div {
-  font-size: 1.125rem;
+/* 核心视点屏大字号文本 */
+.case-text-focus p {
+  font-family: 'PP Editorial New', serif;
+  font-size: 2rem;
   line-height: 1.5;
-  color: var(--color-text-secondary);
-  white-space: nowrap;    /* 核心：强制整句短语横向显示，绝对不单字换行 */
+  color: #ffffff !important;
+  font-style: italic;
+}
+
+/* 5. 图片容器高级卡框 */
+.project-image-split, 
+.split-display-img,
+.split-display-img-secondary,
+.project-final-hero-img {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;           /* 强制裁切，产生高级大画幅感 */
+  border-radius: 4px;
+  background-color: #111;
+}
+.project-final-hero-img {
+  height: 60vh;
+}
+
+/* 6. 核心：双向进出场电影级缓动算法（Air-damping Motion） */
+
+/* ── 文字延迟升起 ── */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(8px);
+  transition: 
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+.reveal-text.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ── 图片微缩放大淡入 ── */
+.reveal-media {
+  opacity: 0;
+  transform: scale(0.95) translateY(30px);
+  filter: blur(10px);
+  transition: 
+    opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+.reveal-media.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+
+/* ==================== DESIGN PROCESS 模块流光矩阵 ==================== */
+.timeline-container-premium {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 齐刷刷并排横向切分 */
+  gap: 30px;
+  width: 100%;
+}
+
+.timeline-card-premium {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px 30px;
+  border-radius: 4px;
+  transition: background 0.4s, border-color 0.4s;
+}
+.timeline-card-premium:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-num {
+  font-family: 'PP Editorial New', serif;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 25px;
+}
+
+.card-body h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+}
+
+.card-tags div {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* ==================== 根级导航栏：彻底粉碎比例限制 ==================== */
+
+.nav-main {
+  /* 1. 脱离任何局部流，强行锁定浏览器视口绝对四角 */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  
+  /* 2. 物理拉满 100% 视口，拒绝任何继承比例 */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: auto !important;
+  border-radius: 0px !important; /* 彻底碎裂圆角 */
+  
+  /* 3. 高级大厂半透明磨砂玻璃 */
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  
+  /* 下边缘精致微白丝线 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  
+  /* 4. 紧凑高定的内边距 */
+  padding: 16px 5% !important;
+  box-sizing: border-box !important;
+  z-index: 999999 !important; /* 提到宇宙最高层级 */
+}
+
+/* 确保内部容器不加任何宽度设限 */
+.nav-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* ==================== 终极无敌：破除本地 file 协议限制的全屏磨砂长条 ==================== */
+
+.nav-ultimate-fullscreen {
+  /* 1. 强行使用固定定位，死死贴合浏览器视窗的四角，绝不向任何父级妥协 */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  
+  /* 2. 强行撑满屏幕绝对宽度，彻底打破红框限制 */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 64px !important; /* 给定一个精致的固定高度，确保长方形比例绝对不变 */
+  
+  /* 3. 彻底斩断圆角，回归利落长方形 */
+  border-radius: 0px !important;
+  
+  /* 4. Yaroslav 同款高定透明磨砂质感 */
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  
+  /* 下边缘极致微白丝线 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  /* 规整布局 */
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 4% !important;
+  box-sizing: border-box !important;
+  z-index: 9999999 !important; /* 顶天层级 */
+}
+
+/* 内部容器：强制百分之百透明，不准有自己的独立形状 */
+.nav-container-ultimate {
+  width: 100% !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 里面的返回链接字样微调 */
+.nav-link-ultimate {
+  font-family: 'Inter', sans-serif !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  text-decoration: none !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  background: transparent !important;
+  transition: color 0.3s ease, transform 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.nav-link-ultimate:hover {
+  color: #ffffff !important;
+  transform: translateX(-3px) !important;
 }

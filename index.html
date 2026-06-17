@@ -5,15 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product Designer Portfolio</title>
 
-<!-- Load Fonts First -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
 
-<!-- Then Load Styles -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
-  <!-- NAVIGATION -->
   <nav class="nav-main">
     <div class="nav-container">
       <a href="#about" class="nav-link">About</a>
@@ -23,29 +22,26 @@
     </div>
   </nav>
 
-  <!-- DYNAMIC BACKGROUND -->
   <div class="fluid-bg"></div>
   <div class="noise-overlay"></div>
 
-  <!-- CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-follower"></div>
   <div class="cursor-text"></div>
 
-  <!-- HERO SECTION (ELEVON STYLE) -->
   <section class="hero" id="about">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/首屏人物背景图png.png" alt="Hero Background" class="hero-bg-character">
+
     <div class="hero-content">
-      <h1 class="hero-title">Product Designer</h1>
-      <h2 class="hero-subtitle">User-Centered Design</h2>
+      <h1 class="hero-title"><span class="text-split-row">Product Designer</span></h1>
+      <h2 class="hero-subtitle"><span class="text-split-row">User-Centered Design</span></h2>
       <h3 class="hero-tagline">Framer Portfolio</h3>
     </div>
   </section>
 
-  <!-- WORKS SECTION (VERTICAL STYLE) -->
   <section class="works" id="works">
     <div class="works-container">
-      <!-- Project 1 -->
-      <article class="work-item" data-project="eye" onclick="window.location.href='project.html?id=eye'">
+      <article class="work-item reveal-element" data-project="eye" onclick="window.location.href='project.html?id=eye'">
         <div class="work-image-wrapper">
           <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png"
                alt="Eye Massager - Smart wellness device"
@@ -58,8 +54,7 @@
         </div>
       </article>
 
-      <!-- Project 2 -->
-      <article class="work-item" data-project="tesla" onclick="window.location.href='project.html?id=tesla'">
+      <article class="work-item reveal-element" data-project="tesla" onclick="window.location.href='project.html?id=tesla'">
         <div class="work-content">
           <h3 class="work-title">Tesla Model400</h3>
           <p class="work-category">拍立得</p>
@@ -72,8 +67,7 @@
         </div>
       </article>
 
-      <!-- Project 3 -->
-      <article class="work-item" data-project="nebulizer" onclick="window.location.href='project.html?id=nebulizer'">
+      <article class="work-item reveal-element" data-project="nebulizer" onclick="window.location.href='project.html?id=nebulizer'">
         <div class="work-image-wrapper">
           <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png"
                alt="Child Nebulizer - Pediatric medical device"
@@ -86,8 +80,7 @@
         </div>
       </article>
 
-      <!-- Project 4 -->
-      <article class="work-item" data-project="rescue" onclick="window.location.href='project.html?id=rescue'">
+      <article class="work-item reveal-element" data-project="rescue" onclick="window.location.href='project.html?id=rescue'">
         <div class="work-content">
           <h3 class="work-title">PeakRescue</h3>
           <p class="work-category">高原供氧救援保障马甲</p>
@@ -100,8 +93,7 @@
         </div>
       </article>
 
-      <!-- Project 5 -->
-      <article class="work-item" data-project="rooftop" onclick="window.location.href='project.html?id=rooftop'">
+      <article class="work-item reveal-element" data-project="rooftop" onclick="window.location.href='project.html?id=rooftop'">
         <div class="work-image-wrapper">
           <img src="https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png"
                alt="Rooftop Tent - Adventure gear"
@@ -114,8 +106,7 @@
         </div>
       </article>
 
-      <!-- Project 6 -->
-      <article class="work-item" data-project="exo" onclick="window.location.href='project.html?id=exo'">
+      <article class="work-item reveal-element" data-project="exo" onclick="window.location.href='project.html?id=exo'">
         <div class="work-content">
           <h3 class="work-title">HoldLine</h3>
           <p class="work-category">摄影人群下肢外骨骼</p>
@@ -130,24 +121,98 @@
     </div>
   </section>
 
-  <!-- SKILLS SECTION -->
-  <section class="skills" id="skills">
-    <div class="skills-container">
+  <section class="skills reveal-element" id="skills">
+    <div class="skills-center-container">
+      
       <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-item">UI/UX Design</div>
-        <div class="skill-item">Prototyping</div>
-        <div class="skill-item">User Research</div>
-        <div class="skill-item">Interaction Design</div>
-        <div class="skill-item">Design Systems</div>
-        <div class="skill-item">Framer</div>
+      
+      <div class="skills-marquee-wrapper row-right">
+        <div class="skills-track track-right">
+          <div class="skills-group">
+            <div class="skill-item">Product Design</div>
+            <div class="skill-item">Prototyping</div>
+            <div class="skill-item">User Research</div>
+            <div class="skill-item">Interaction Design</div>
+            <div class="skill-item">Design Systems</div>
+            <div class="skill-item">Framer</div>
+          </div>
+          <div class="skills-group" aria-hidden="true">
+            <div class="skill-item">Product Design</div>
+            <div class="skill-item">Prototyping</div>
+            <div class="skill-item">User Research</div>
+            <div class="skill-item">Interaction Design</div>
+            <div class="skill-item">Design Systems</div>
+            <div class="skill-item">Framer</div>
+          </div>
+          <div class="skills-group" aria-hidden="true">
+            <div class="skill-item">Product Design</div>
+            <div class="skill-item">Prototyping</div>
+            <div class="skill-item">User Research</div>
+            <div class="skill-item">Interaction Design</div>
+            <div class="skill-item">Design Systems</div>
+            <div class="skill-item">Framer</div>
+          </div>
+          <div class="skills-group" aria-hidden="true">
+            <div class="skill-item">Product Design</div>
+            <div class="skill-item">Prototyping</div>
+            <div class="skill-item">User Research</div>
+            <div class="skill-item">Interaction Design</div>
+            <div class="skill-item">Design Systems</div>
+            <div class="skill-item">Framer</div>
+          </div>
+        </div>
       </div>
+
+      <div class="skills-marquee-wrapper row-left">
+        <div class="skills-track track-left">
+          <div class="skills-group">
+            <div class="skill-item">PS</div>
+            <div class="skill-item">AI</div>
+            <div class="skill-item">Rhino</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">Github</div>
+            <div class="skill-item">Keyshot</div>
+            <div class="skill-item">Arduino</div>
+          </div>
+          <div class="skills-group" aria-hidden="true">
+            <div class="skill-item">PS</div>
+            <div class="skill-item">AI</div>
+            <div class="skill-item">Rhino</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">Github</div>
+            <div class="skill-item">Keyshot</div>
+            <div class="skill-item">Arduino</div>
+          </div>
+          <div class="skills-group" aria-hidden="true">
+            <div class="skill-item">PS</div>
+            <div class="skill-item">AI</div>
+            <div class="skill-item">Rhino</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">Github</div>
+            <div class="skill-item">Keyshot</div>
+            <div class="skill-item">Arduino</div>
+          </div>
+          <div class="skills-group" aria-hidden="true">
+            <div class="skill-item">PS</div>
+            <div class="skill-item">AI</div>
+            <div class="skill-item">Rhino</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">Github</div>
+            <div class="skill-item">Keyshot</div>
+            <div class="skill-item">Arduino</div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
   <section class="contact" id="contact">
-    <div class="contact-container">
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/人物图.png" alt="Contact Background" class="contact-bg-character">
+    
+    <div class="contact-blur-overlay"></div>
+
+    <div class="contact-container reveal-element">
       <h2 class="section-title">Get In Touch</h2>
       <p class="contact-text">Let's create something amazing together</p>
       <a href="mailto:contact@example.com" class="contact-link">panjiamei988@gmail.com</a>
@@ -158,6 +223,45 @@
   <script src="assets/minimal-fix.js"></script>
   <script src="assets/project-data-manager.js"></script>
   <script src="assets/auto-update.js"></script>
+  
+  <script>
+    // 1. 初始化全站 Lenis 高级阻尼滚动（接管并重写滚轮逻辑）
+    const lenis = new Lenis({
+      duration: 1.4, /* 减速滑行耗时，数值越大越具有高档跑车的阻尼减速感 */
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), /* 大厂最爱用的指数缓动曲线 */
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smoothWaveform: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf); // 锁定系统显卡执行高频重绘，杜绝撕裂感
+
+    // 2. 初始化高定视口交叉监听器（实现滚动到指定位置触发元素级联动效）
+    const revealOptions = {
+      root: null,
+      threshold: 0.15, /* 当元素在屏幕中露出 15% 面积时，精准唤醒入场动效 */
+      rootMargin: "0px 0px -40px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active'); // 为滑入屏幕的板块注入 active 激活状态
+          observer.unobserve(entry.target);     // 已苏醒的元素移出监听队列，极大节省 CPU/GPU 开销
+        }
+      });
+    }, revealOptions);
+
+    // 将打上了动效标签的元素全部封锁进监听雷达
+    document.querySelectorAll('.reveal-element').forEach(element => {
+      revealObserver.observe(element);
+    });
+  </script>
+
   <link rel="stylesheet" href="assets/ultimate-fix.css">
 </body>
 </html>

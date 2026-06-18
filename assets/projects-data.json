@@ -44,7 +44,7 @@
       "id": "nebulizer",
       "title": "儿童哮喘雾化器 Nenolizer",
       "category": "Medical Design",
-      "description": "以童趣疗愈，中医护航为理念，结合Arduino的创新设计",
+      "description": "以童趣疗愈,中医护航为理念,结合Arduino的创新设计",
       "image": "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
       "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
       "problem": "传统雾化器冰冷恐怖，儿童抗拒治疗，治疗效果不佳。",
@@ -53,7 +53,7 @@
       "process": [
         { "step": "01", "title": "需求分析", "desc": "儿童心理研究和家长访谈，了解治疗痛点" },
         { "step": "02", "title": "造型设计", "desc": "可爱动物造型设计，消除儿童恐惧心理" },
-        { "step": "03", "title": "智能集成", "desc": "Arduino控制雾化参数，配合游戏进度" },
+        { "step": "03", "title": "智能集成", "desc": "Arduino控制雾化参数,配合游戏进度" },
         { "step": "04", "title": "医疗验证", "desc": "与中医专家合作，确保治疗效果" }
       ],
       "technologies": ["医疗设计", "Arduino", "游戏化设计", "儿童心理学"],
@@ -87,15 +87,15 @@
       "heroImage": "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
       "problem": "传统人工清冰效率低、标准不一，影响冰场运营质量。",
       "insight": "需要自动化解决方案，确保冰面质量稳定，降低人力成本。",
-      "solution": "智能清冰车，采用AI视觉识别和自动化控制技术。",
+      "solution": "智能清冰车,采用AI视觉识别和自动化控制技术。",
       "process": [
         { "step": "01", "title": "需求分析", "desc": "冰场运营痛点和清洁标准研究" },
         { "step": "02", "title": "机械设计", "desc": "多轴清洁系统，适应不同冰面状况" },
-        { "step": "03", "title": "智能控制", "desc": "AI视觉识别，精准定位清洁区域" },
+        { "step": "03", "title": "智能控制", "desc": "AI视觉识别,精准定位清洁区域" },
         { "step": "04", "title": "效率测试", "desc": "对比人工清洁，验证效率提升" }
       ],
       "technologies": ["机械设计", "AI视觉", "自动化控制", "物联网"],
-      "results": "清洁效率提升300%，冰面质量达标率100%"
+      "results": "清洁效率提升300%,冰面质量达标率100%"
     },
     {
       "id": "exo-skeleton",
@@ -114,7 +114,7 @@
         { "step": "04", "title": "实际测试", "desc": "专业摄影师长期使用测试" }
       ],
       "technologies": ["生物力学", "传感器技术", "AI算法", "可穿戴设备"],
-      "results": "减少90%腰部压力，延长创作时长200%"
+      "results": "减少90%腰部压力,延长创作时长200%"
     }
   ]
 }

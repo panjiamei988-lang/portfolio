@@ -79,7 +79,7 @@ function enhanceNavigation() {
 
 // 添加项目图片懒加载
 function addLazyLoading() {
-  const projectImages = document.querySelectorAll('.project-image, .case-text img');
+  const projectImages = document.querySelectorAll('.project-image, .project-image-split, .split-display-img, .case-text img');
 
   const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

@@ -134,3 +134,16 @@ if (typeof document !== 'undefined') {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { MainApp };
 }
+
+/* 详情页内容初始状态：隐形且向下位移 30px */
+.project-detail-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 渐显激活状态 */
+.project-detail-container.entrance-active {
+  opacity: 1;
+  transform: translateY(0);
+}

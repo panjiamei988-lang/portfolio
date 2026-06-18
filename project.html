@@ -27,8 +27,8 @@
         <h1 id="projectTitle" class="reveal-text">Project Title</h1>
         <h2 id="projectSubtitle" class="reveal-text">Project Subtitle</h2>
       </div>
-      <div class="hero-image-side reveal-media">
-        <img id="projectHeroImage" src="" alt="Project hero image" class="project-image-split">
+      <div class="hero-image-side" style="opacity: 1 !important; transform: none !important; pointer-events: none; background-color: black;">
+        <img id="projectHeroImage" src="https://panjiamei988-lang.github.io/portfolio-images/images/眼部1.png" alt="Project hero image" class="project-image-split">
       </div>
     </div>
   </section>
@@ -102,11 +102,11 @@
       const urlParams = new URLSearchParams(window.location.search);
       const projectId = urlParams.get('id');
 
-      // ── 完全保留你原有的完整数据源，一个字没改 ──
+      // ── 所有路径全部采用纯英文数字的格式，彻底杜绝中文乱码导致的不显示 ──
       const projectData = {
         eye: {
           title: "SynMuse 森眸", subtitle: "眼部按摩仪",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/眼部1.png",
           problem: "当前眼部按摩仪 market 存在安全性不可控、噪音超标、佩戴不舒适、操作复杂、卫生难维护、效果存疑、品控混乱七大核心问题,并且缺乏个性化和有效用户体验",
           insight: '通过 “眼球避让系统+超静音电机+轻量化结构+一键旋钮+可拆卸内衬+香薰疗愈” 的组合方案，逐一回应了这些痛点，将产品定位从“功能型护眼工具”升级为 “数字时代的安全解压仪式"', 
           process: [
@@ -115,12 +115,10 @@
             { step: "03", title: "设计思路", desc: "设计草图 AIGC 使用流程" }, 
             { step: "04", title: "产品展示", desc: "爆炸图 细节图 界面展示" } 
           ],
-          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-074.png",
           reflection: "本设计从都市女性“解压放松”的真实需求出发，通过背景调研、竞品分析与用户旅程地图，完成了从概念到细节的全流程设计。最终方案集成了眼球避让系统、静音电机、磁吸香薰舱与可拆卸内衬四大核心模块，将产品定位从“功能型护眼工具”升级为“数字时代的自我关怀仪式”。"
         },
         tesla: {
           title: "Tesla Model400", subtitle: "拍立得",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
           problem: "传统拍立得体积偏大、便携性不足，难以适配出行场景,外观风格同质化，缺乏科技感与品牌辨识度",
           insight: "小巧轻盈，可放入扶手箱或随身包;极简操作，滑动/点按即可切换模式;延续特斯拉极简美学，兼具科技感与仪式感",
           process: [
@@ -129,12 +127,10 @@
             { step: "03", title: "设计思路", desc: "设计构思 设计草图 AIGC" },
             { step: "04", title: "产品展示", desc: "爆炸图 细节图" }
           ],
-          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-018.png",
           reflection: "本设计将特斯拉的设计语言——极简、流畅、无冗余，注入拍立得这一经典品类,证明了“科技美学”与“即时摄影”可以共存。跨界不是简单的Logo叠加,而是将品牌的核心价值转化为可触摸的产品体验。"
         },
         nebulizer: {
           title: "Nenolizer", subtitle: "儿童雾化器",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
           problem: "传统雾化器外观冰冷、医疗器械感强，儿童抗拒使用;雾化过程枯燥，缺乏安抚与陪伴感",
           insight: "童趣外观，弱化医疗器械的恐惧感;结合中医“宣通肺气”理念，辅助治疗效果",
           process: [
@@ -143,12 +139,10 @@
             { step: "03", title: "设计过程", desc: "情绪板 设计草图 AIGC arduino技术试验" },
             { step: "04", title: "产品展示", desc: "爆炸图 细节图" }
           ],
-          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-098.png",
           reflection: "童趣疗愈，中医护航”的核心在于：医疗产品也可以有温度。将微网式雾化技术与指尖末梢刺激相结合，不仅是功能的叠加，更是对“治疗体验”的重新定义——让孩子在雾化中感受到被安抚，而非被治疗。"
         },
         rescue: {
           title: "PeakRescue", subtitle: "高原供氧救援保障马甲",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png",
           problem: "供氧续航不足：间断供氧，需补给；重量虽小，但续航短；管线干扰战术：外露管线易钩挂，妨碍战术动作；制氧适配性差：无便捷吸氧接口，紧急操作繁琐；",
           insight: "不间断供氧，延长单次作业时间；嵌入式制氧模块，紧急吸氧一按即开；轻量化设计，不增加额外负担；可拆卸电池，随用随取",
           process: [
@@ -157,12 +151,10 @@
             { step: "03", title: "设计过程", desc: "情绪板 设计草图 AIGC 使用流程图" },
             { step: "04", title: "产品展示", desc: "爆炸图 细节图" }
           ],
-          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-166.png",
           reflection: "高原救援的本质是与时间赛跑。本设计通过将供氧、监测、保暖三大系统集成于一件马甲，回应了“怎样能轻松获得氧气，而不是被沉重的装备拖垮”这一核心命题。设计的终极价值，是让救援者在挽救他人生命时，自己的安全也能被保障。"
         },
         rooftop: {
           title: "折影叠帐", subtitle: "车顶帐",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
           problem: "车顶帐与天幕相互独立，需分别购买、分别携带、分别搭建；传统车顶帐收折后体积大、重量重，单人无法装卸;功能单一，无法满足“睡眠+遮阳+社交”多场景需求",
           insight: "一物多用，车顶帐与天幕功能合二为一;轻量化,单人可拆卸;模块化快拆，不使用时减少汽车负担;防蚊、防虫，解决传统天幕敞开式痛点",
           process: [
@@ -171,12 +163,10 @@
             { step: "03", title: "使用流程图", desc: "顶帐和尾帐的使用流程" },
             { step: "04", title: "产品展示", desc: "整体展示 细节图" }
           ],
-          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-196.png",
           reflection: "本设计以“简化露营准备流程”为核心目标,将折纸多稳态结构引入车顶帐设计,实现了一套系统在车顶帐、车尾天幕、防蚊纱帐三种形态间的自由切换。轻量化与模块化快拆的设计，回应了用户“说走就走”的核心诉求。"
         },
         exo: {
           title: "HoldLine", subtitle: "摄影人群下肢外骨骼",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png",
           problem: "重量普遍偏重，长时间穿戴负担大；穿戴时间偏长,紧急场景下不够高效",
           insight: "轻量化,减少下肢负担;快速穿脱,适配户外摄影等高频切换场景;智能步态识别，上坡支撑+下坡缓冲自动切换;防水防尘，适配户外复杂地形",
           process: [
@@ -185,7 +175,6 @@
             { step: "03", title: "设计过程", desc: "情绪板 设计草图 使用流程图" },
             { step: "04", title: "产品展示", desc: "爆炸图 细节图 设计亮点" }
           ],
-          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/images-280.png",
           reflection: "面向摄影人群的外骨骼，本质上是“让创作者专注于构图，而非负重”。当设备能自动感知蹲姿/站姿、上坡/下坡并动态调整助力时，技术便退居幕后，成为创作者身体的延伸——这或许是可穿戴设备最理想的状态。"
         }
       };
@@ -193,14 +182,19 @@
       if (projectId && projectData[projectId]) {
         const project = projectData[projectId];
 
-        // 核心文本渲染
+        // 文本渲染
         document.getElementById('projectTitle').textContent = project.title;
         document.getElementById('projectSubtitle').textContent = project.subtitle;
-        document.getElementById('projectHeroImage').src = project.heroImage;
         
-        // ✨ 高级联动：同步给其余分页的画幅配图，打造高定杂志排版
-        document.querySelectorAll('.split-display-img, .split-display-img-secondary').forEach(img => {
+        // 📸 直接赋纯英文数字的 URL 值给 src 属性
+        // document.getElementById('projectHeroImage').src = project.heroImage; // 已在HTML中直接设置
+        document.getElementById('finalResultImage').src = project.finalImage;
+
+        document.querySelectorAll('.split-display-img').forEach(img => {
           img.src = project.heroImage;
+        });
+        document.querySelectorAll('.split-display-img-secondary').forEach(img => {
+          img.src = project.finalImage;
         });
 
         document.getElementById('problemContent').innerHTML = `<p>${project.problem}</p>`;
@@ -221,13 +215,11 @@
         }).join('');
         document.querySelector('.timeline-container-premium').innerHTML = timelineHTML;
 
-        document.getElementById('finalResultImage').src = project.finalImage;
         document.getElementById('reflectionContent').innerHTML = `<p>${project.reflection}</p>`;
-
         document.title = `${project.title} - Case Study`;
       }
 
-      // ── ✨ 核心启动：Lenis 全站惯性阻尼滚动（Yaroslav 的真丝滑底座） ──
+      // ── Lenis 全站平滑滚动 ──
       const lenis = new Lenis({
         duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -240,11 +232,11 @@
       }
       requestAnimationFrame(raf);
 
-      // ── ✨ 核心启动：双向滑动进场/出场渐变雷达 ──
+      // ── 视觉滚动淡入进场效果 ──
       const revealOptions = {
         root: null,
-        threshold: 0.1,             /* 露出 10% 即优雅启动 */
-        rootMargin: "-80px 0px -80px 0px" /* 上下边缘触发缓冲带 */
+        threshold: 0.1, 
+        rootMargin: "-80px 0px -80px 0px"
       };
 
       const revealObserver = new IntersectionObserver((entries) => {
@@ -253,18 +245,15 @@
           const mediaElements = entry.target.querySelectorAll('.reveal-media');
           
           if (entry.isIntersecting) {
-            // 滑入屏幕：分别激活文字和图片的优雅入场
             textElements.forEach(el => el.classList.add('active'));
             mediaElements.forEach(el => el.classList.add('active'));
           } else {
-            // 滑出屏幕：同步撤销，触发向外渐渐消失（Fade Out）
             textElements.forEach(el => el.classList.remove('active'));
             mediaElements.forEach(el => el.classList.remove('active'));
           }
         });
       }, revealOptions);
 
-      // 封锁每一个 Section 容器进行高频侦测
       document.querySelectorAll('.premium-section').forEach(sec => {
         revealObserver.observe(sec);
       });

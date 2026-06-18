@@ -410,3 +410,20 @@ if (typeof document !== 'undefined') {
 
   console.log('Project Data Manager initialized');
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.project-detail-container');
+  if (container) {
+    // 检查是否是从主页点击过来的
+    if (sessionStorage.getItem('playDetailsEntrance') === 'true') {
+      // 稍微延迟 100ms 播放，等浏览器加载完渲染，动效最丝滑
+      setTimeout(() => {
+        container.classList.add('entrance-active');
+        sessionStorage.removeItem('playDetailsEntrance'); // 用完即丢
+      }, 100);
+    } else {
+      // 如果用户是直接刷新详情页的，直接显示，不影响基础体验
+      container.classList.add('entrance-active');
+    }
+  }
+});

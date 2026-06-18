@@ -28,7 +28,7 @@
         <h2 id="projectSubtitle" class="reveal-text">Project Subtitle</h2>
       </div>
       <div class="hero-image-side" style="opacity: 1 !important; transform: none !important; pointer-events: none; background-color: black;">
-        <img id="projectHeroImage" src="https://panjiamei988-lang.github.io/portfolio-images/images/眼部1.png" alt="Project hero image" class="project-image-split">
+        <img id="projectHeroImage" src="" alt="Project hero image" class="project-image-split">
       </div>
     </div>
   </section>
@@ -106,7 +106,8 @@
       const projectData = {
         eye: {
           title: "SynMuse 森眸", subtitle: "眼部按摩仪",
-          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/眼部1.png",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan2.png",
           problem: "当前眼部按摩仪 market 存在安全性不可控、噪音超标、佩戴不舒适、操作复杂、卫生难维护、效果存疑、品控混乱七大核心问题,并且缺乏个性化和有效用户体验",
           insight: '通过 “眼球避让系统+超静音电机+轻量化结构+一键旋钮+可拆卸内衬+香薰疗愈” 的组合方案，逐一回应了这些痛点，将产品定位从“功能型护眼工具”升级为 “数字时代的安全解压仪式"', 
           process: [
@@ -119,6 +120,8 @@
         },
         tesla: {
           title: "Tesla Model400", subtitle: "拍立得",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/pai1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/pai2.png",
           problem: "传统拍立得体积偏大、便携性不足，难以适配出行场景,外观风格同质化，缺乏科技感与品牌辨识度",
           insight: "小巧轻盈，可放入扶手箱或随身包;极简操作，滑动/点按即可切换模式;延续特斯拉极简美学，兼具科技感与仪式感",
           process: [
@@ -131,6 +134,8 @@
         },
         nebulizer: {
           title: "Nenolizer", subtitle: "儿童雾化器",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wu1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wu2.png",
           problem: "传统雾化器外观冰冷、医疗器械感强，儿童抗拒使用;雾化过程枯燥，缺乏安抚与陪伴感",
           insight: "童趣外观，弱化医疗器械的恐惧感;结合中医“宣通肺气”理念，辅助治疗效果",
           process: [
@@ -143,6 +148,8 @@
         },
         rescue: {
           title: "PeakRescue", subtitle: "高原供氧救援保障马甲",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/ma1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/ma2.png",
           problem: "供氧续航不足：间断供氧，需补给；重量虽小，但续航短；管线干扰战术：外露管线易钩挂，妨碍战术动作；制氧适配性差：无便捷吸氧接口，紧急操作繁琐；",
           insight: "不间断供氧，延长单次作业时间；嵌入式制氧模块，紧急吸氧一按即开；轻量化设计，不增加额外负担；可拆卸电池，随用随取",
           process: [
@@ -155,6 +162,8 @@
         },
         rooftop: {
           title: "折影叠帐", subtitle: "车顶帐",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/che1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/che2.png",
           problem: "车顶帐与天幕相互独立，需分别购买、分别携带、分别搭建；传统车顶帐收折后体积大、重量重，单人无法装卸;功能单一，无法满足“睡眠+遮阳+社交”多场景需求",
           insight: "一物多用，车顶帐与天幕功能合二为一;轻量化,单人可拆卸;模块化快拆，不使用时减少汽车负担;防蚊、防虫，解决传统天幕敞开式痛点",
           process: [
@@ -167,6 +176,8 @@
         },
         exo: {
           title: "HoldLine", subtitle: "摄影人群下肢外骨骼",
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wai1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wai2.png",
           problem: "重量普遍偏重，长时间穿戴负担大；穿戴时间偏长,紧急场景下不够高效",
           insight: "轻量化,减少下肢负担;快速穿脱,适配户外摄影等高频切换场景;智能步态识别，上坡支撑+下坡缓冲自动切换;防水防尘，适配户外复杂地形",
           process: [
@@ -187,7 +198,7 @@
         document.getElementById('projectSubtitle').textContent = project.subtitle;
         
         // 📸 直接赋纯英文数字的 URL 值给 src 属性
-        // document.getElementById('projectHeroImage').src = project.heroImage; // 已在HTML中直接设置
+        document.getElementById('projectHeroImage').src = project.heroImage;
         document.getElementById('finalResultImage').src = project.finalImage;
 
         document.querySelectorAll('.split-display-img').forEach(img => {

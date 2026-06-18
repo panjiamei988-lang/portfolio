@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Test</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/project-styles.css">
+  <style>
+    body { background: #000; color: #fff; padding: 20px; }
+    .debug-box { margin: 10px 0; padding: 15px; background: #111; border: 1px solid #333; }
+    .debug-box h3 { color: #0f0; margin-top: 0; }
+    .debug-info { font-family: monospace; font-size: 12px; line-height: 1.6; color: #aaa; }
+    img { max-width: 100%; margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h1>Image Debug Test</h1>
+
+  <div class="debug-box">
+    <h3>Test 1: Direct Image URL</h3>
+    <div class="debug-info">
+      URL: https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png
+    </div>
+    <img src="https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png" alt="Test 1">
+  </div>
+
+  <div class="debug-box">
+    <h3>Test 2: HTML Image with Style</h3>
+    <div class="debug-info">
+      Test if image loads with inline style
+    </div>
+    <img src="" alt="Test 2" style="width: 100%; height: 400px; object-fit: cover; background: #111;">
+  </div>
+
+  <div class="debug-box">
+    <h3>Test 3: Test Path</h3>
+    <div class="debug-info">
+      Testing if script can read project data:
+    </div>
+    <div id="test-output"></div>
+  </div>
+
+  <script>
+    // Test script
+    const projectData = {
+      eye: {
+        title: "SynMuse 森眸",
+        heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png",
+        finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan2.png"
+      }
+    };
+
+    const output = document.getElementById('test-output');
+    output.innerHTML = `
+      <p>Project Title: ${projectData.eye.title}</p>
+      <p>Hero Image: ${projectData.eye.heroImage}</p>
+      <p>Final Image: ${projectData.eye.finalImage}</p>
+      <p>Image exists: ${!!projectData.eye.heroImage}</p>
+    `;
+
+    // Test if image loads
+    const img = document.querySelector('img[alt="Test 2"]');
+    img.onload = () => {
+      console.log('✅ Image loaded successfully!');
+    };
+    img.onerror = () => {
+      console.log('❌ Image failed to load!');
+    };
+  </script>
+</body>
+</html>

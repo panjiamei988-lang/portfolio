@@ -32,6 +32,18 @@
   grid-template-columns: 1.1fr 0.9fr; /* 黄金非对称左右分割 */
   gap: 60px;
   align-items: center;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.premium-container-final {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  height: 100%;
 }
 
 .premium-container-split {
@@ -41,6 +53,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  height: 100%;
 }
 .premium-container-split.reversed {
   direction: rtl; /* 左右镜像翻转版式，打破死板 */
@@ -69,6 +82,31 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  align-items: center;
+}
+
+.final-media-hero {
+  width: 100%;
+  max-width: 1000px;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 最终结果图片立即显示 */
+.final-media-hero.reveal-media {
+  opacity: 1 !important;
+}
+
+.final-media-hero .project-final-hero-img {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+  filter: blur(0) !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* 4. 文本层级高定细则（抹除一切红色渐变） */
@@ -127,12 +165,60 @@
 }
 
 /* 5. 图片容器高级卡框 */
-.project-image-split, 
+.info-media-block {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 问题部分图片立即显示，不等待动画 */
+.info-media-block.reveal-media {
+  opacity: 1 !important;
+}
+
+.info-media-block .split-display-img {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+  filter: blur(0) !important;
+}
+
+/* 确保在 grid 容器中正确显示 */
+.premium-container-split > .info-media-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-side {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
+  min-height: 500px;
+}
+
+.hero-image-side .project-image-split {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  filter: blur(0) !important;
+}
+
+.project-image-split,
 .split-display-img,
 .split-display-img-secondary,
 .project-final-hero-img {
   width: 100%;
-  height: 70vh;
+  height: 100%;
   object-fit: cover;           /* 强制裁切，产生高级大画幅感 */
   border-radius: 4px;
   background-color: #111;

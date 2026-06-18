@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Image Test</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      font-family: sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 { color: #fff; }
+    .section {
+      margin: 50px 0;
+      padding: 30px;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+    .section h2 { margin-top: 0; color: #4CAF50; }
+    .image-container {
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #333;
+    }
+    img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .debug {
+      margin-top: 10px;
+      padding: 10px;
+      background: #222;
+      font-family: monospace;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Display Test</h1>
+
+    <div class="section">
+      <h2>Test 1: Direct Image URL (heroImage)</h2>
+      <div class="image-container">
+        <img id="img1" src="" alt="Test 1">
+      </div>
+      <div id="debug1" class="debug">Status: Loading...</div>
+    </div>
+
+    <div class="section">
+      <h2>Test 2: Direct Image URL (finalImage)</h2>
+      <div class="image-container">
+        <img id="img2" src="" alt="Test 2">
+      </div>
+      <div id="debug2" class="debug">Status: Loading...</div>
+    </div>
+
+    <div class="section">
+      <h2>Test 3: With reveal-media class</h2>
+      <div class="image-container reveal-media">
+        <img id="img3" src="" alt="Test 3">
+      </div>
+      <div id="debug3" class="debug">Status: Loading...</div>
+    </div>
+
+    <script>
+      const projectData = {
+        eye: {
+          heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png",
+          finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan2.png"
+        }
+      };
+
+      const projectId = "eye";
+      const project = projectData[projectId];
+
+      // Set images
+      document.getElementById('img1').src = project.heroImage;
+      document.getElementById('img2').src = project.finalImage;
+      document.getElementById('img3').src = project.heroImage;
+
+      // Add event listeners
+      const testImages = [
+        { id: 'img1', debugId: 'debug1' },
+        { id: 'img2', debugId: 'debug2' },
+        { id: 'img3', debugId: 'debug3' }
+      ];
+
+      testImages.forEach(({ id, debugId }) => {
+        const img = document.getElementById(id);
+        const debug = document.getElementById(debugId);
+
+        img.onload = () => {
+          debug.innerHTML = '✅ Image loaded successfully!';
+          debug.style.color = '#4CAF50';
+        };
+
+        img.onerror = () => {
+          debug.innerHTML = '❌ Image failed to load';
+          debug.style.color = '#f44336';
+        };
+      });
+    </script>
+  </div>
+</body>
+</html>

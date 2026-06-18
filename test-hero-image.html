@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Image Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #fff;
+      padding: 0;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .premium-container {
+      width: 100%;
+      max-width: 1400px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      height: 100vh;
+      min-height: 100vh;
+      padding: 80px 6%;
+    }
+
+    .hero-text-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-family: 'PP Editorial New', serif;
+      font-size: 5.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    .hero-image-side {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .hero-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1 !important;
+    }
+
+    .premium-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<section class="premium-section">
+  <div class="premium-container">
+    <div class="hero-text-side">
+      <h1>Project Title</h1>
+      <h2>Project Subtitle</h2>
+    </div>
+    <div class="hero-image-side">
+      <img id="heroImg" src="" alt="Hero Image" class="hero-image-split">
+    </div>
+  </div>
+</section>
+
+<script>
+  const projectData = {
+    eye: {
+      title: "SynMuse 森眸",
+      subtitle: "眼部按摩仪",
+      heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png",
+      finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan2.png"
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroImg = document.getElementById('heroImg');
+
+    console.log('Setting hero image src to:', projectData.eye.heroImage);
+    heroImg.src = projectData.eye.heroImage;
+
+    console.log('Hero image element:', heroImg);
+    console.log('Hero image src:', heroImg.src);
+
+    heroImg.onload = () => {
+      console.log('✅ Hero image loaded!');
+    };
+
+    heroImg.onerror = () => {
+      console.error('❌ Hero image failed to load!');
+    };
+  });
+</script>
+
+</body>
+</html>

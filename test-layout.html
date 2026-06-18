@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Test</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/project-styles.css">
+  <style>
+    body { background: #000; color: #fff; padding: 0; margin: 0; }
+  </style>
+</head>
+<body>
+
+<section class="case-hero premium-section" data-section="hero">
+  <div class="premium-container">
+    <div class="hero-text-side">
+      <h1 class="reveal-text">Project Title</h1>
+      <h2 class="reveal-text">Project Subtitle</h2>
+    </div>
+    <div class="hero-image-side">
+      <img src="" alt="Hero Image" class="project-image-split">
+    </div>
+  </div>
+</section>
+
+<section class="case-section premium-section" data-section="insight">
+  <div class="premium-container-center reveal-text">
+    <span class="section-badge">02 / Strategy</span>
+    <h2>Key Insights</h2>
+    <p>Key insights section with placeholder content for testing layout.</p>
+  </div>
+</section>
+
+<section class="case-section timeline premium-section" data-section="process">
+  <div class="premium-container-vertical">
+    <div class="section-header-block reveal-text">
+      <span class="section-badge">03 / Execution</span>
+      <h2>Design Process</h2>
+    </div>
+    <div class="timeline-container-premium reveal-media">
+      <div class="timeline-card-premium">
+        <div class="card-num">01</div>
+        <div class="card-body">
+          <h3>Research</h3>
+          <div class="card-tags">Market analysis User research</div>
+        </div>
+      </div>
+      <div class="timeline-card-premium">
+        <div class="card-num">02</div>
+        <div class="card-body">
+          <h3>Design</h3>
+          <div class="card-tags">Prototyping Design system</div>
+        </div>
+      </div>
+      <div class="timeline-card-premium">
+        <div class="card-num">03</div>
+        <div class="card-body">
+          <h3>Final</h3>
+          <div class="card-tags">Testing Launch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case-section premium-section" data-section="final">
+  <div class="premium-container-final">
+    <div class="final-text-caption reveal-text">
+      <span class="section-badge">04 / Solution</span>
+      <h2>Final Solution</h2>
+      <p>The final solution represents a comprehensive approach to addressing the identified challenges through thoughtful design and user-centered methodologies.</p>
+    </div>
+    <div class="final-media-hero reveal-media">
+      <img src="" alt="Final Image" class="project-final-hero-img">
+    </div>
+  </div>
+</section>
+
+<script>
+  const projectData = {
+    eye: {
+      title: "SynMuse 森眸", subtitle: "眼部按摩仪",
+      heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png",
+      finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan2.png",
+      insight: '通过 "眼球避让系统+超静音电机+轻量化结构+一键旋钮+可拆卸内衬+香薰疗愈" 的组合方案，逐一回应了这些痛点，将产品定位从"功能型护眼工具"升级为 "数字时代的安全解压仪式"',
+      process: [
+        { step: "01", title: "背景调研", desc: "竞品调研 结构分析"},
+        { step: "02", title: "用户分析", desc: "用户画像 故事板 用户旅程地图" },
+        { step: "03", title: "设计思路", desc: "设计草图 AIGC 使用流程" },
+        { step: "04", title: "产品展示", desc: "爆炸图 细节图 界面展示" }
+      ],
+      reflection: "本设计从都市女性"解压放松"的真实需求出发，通过背景调研、竞品分析与用户旅程地图，完成了从概念到细节的全流程设计。最终方案集成了眼球避让系统、静音电机、磁吸香薰舱与可拆卸内衬四大核心模块，将产品定位从"功能型护眼工具"升级为"数字时代的自我关怀仪式"。"
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroImg = document.querySelector('.hero-image-side img');
+    const finalImg = document.querySelector('.final-media-hero img');
+
+    heroImg.src = projectData.eye.heroImage;
+    finalImg.src = projectData.eye.finalImage;
+
+    console.log('Hero image src set to:', heroImg.src);
+    console.log('Final image src set to:', finalImg.src);
+  });
+</script>
+
+</body>
+</html>

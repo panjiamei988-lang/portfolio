@@ -95,8 +95,9 @@ function addLazyLoading() {
     });
   });
 
+  // 只对有 data-src 属性的图片使用懒加载
   projectImages.forEach(img => {
-    if (!img.src || img.src === '') {
+    if (img.dataset.src) {
       img.style.opacity = '0';
       imageObserver.observe(img);
     }

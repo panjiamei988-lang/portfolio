@@ -7,8 +7,6 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
 
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/project-styles.css">
 </head>
@@ -27,22 +25,8 @@
         <h1 id="projectTitle" class="reveal-text">Project Title</h1>
         <h2 id="projectSubtitle" class="reveal-text">Project Subtitle</h2>
       </div>
-      <div class="hero-image-side" style="opacity: 1 !important; transform: none !important; pointer-events: none; background-color: black;">
+      <div class="hero-image-side">
         <img id="projectHeroImage" src="" alt="Project hero image" class="project-image-split">
-      </div>
-    </div>
-  </section>
-
-  <section class="case-section premium-section" data-section="problem">
-    <div class="premium-container-split">
-      <div class="info-meta-block reveal-text">
-        <span class="section-badge">01 / Challenge</span>
-        <h2>Problem Statement</h2>
-        <div id="problemContent" class="case-text-premium">
-          </div>
-      </div>
-      <div class="info-media-block reveal-media">
-        <img class="split-display-img" src="" alt="Problem Visual">
       </div>
     </div>
   </section>
@@ -69,27 +53,22 @@
 
   <section class="case-section premium-section" data-section="final">
     <div class="premium-container-final">
-      <div class="final-media-hero reveal-media">
-        <img id="finalResultImage" src="" alt="Final design result" class="project-final-hero-img">
-      </div>
       <div class="final-text-caption reveal-text">
         <span class="section-badge">04 / Solution</span>
         <h2>Final Solution</h2>
         <p>The final solution represents a comprehensive approach to addressing the identified challenges through thoughtful design and user-centered methodologies.</p>
       </div>
+      <div class="final-media-hero reveal-media">
+        <img id="finalResultImage" src="" alt="Final design result" class="project-final-hero-img">
+      </div>
     </div>
   </section>
 
   <section class="case-section premium-section" data-section="reflection">
-    <div class="premium-container-split reversed">
-      <div class="info-media-block reveal-media">
-        <img class="split-display-img-secondary" src="" alt="Reflection Visual">
-      </div>
-      <div class="info-meta-block reveal-text">
-        <span class="section-badge">05 / Conclusion</span>
-        <h2>Reflection & Learnings</h2>
-        <div id="reflectionContent" class="case-text-premium">
-          </div>
+    <div class="premium-container-center reveal-text">
+      <span class="section-badge">05 / Conclusion</span>
+      <h2>Reflection & Learnings</h2>
+      <div id="reflectionContent" class="case-text-premium">
       </div>
     </div>
   </section>
@@ -101,6 +80,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const projectId = urlParams.get('id');
+
+      // Debug: 确认 DOM 已加载
+      console.log('Project page loaded with ID:', projectId);
 
       // ── 所有路径全部采用纯英文数字的格式，彻底杜绝中文乱码导致的不显示 ──
       const projectData = {
@@ -196,19 +178,64 @@
         // 文本渲染
         document.getElementById('projectTitle').textContent = project.title;
         document.getElementById('projectSubtitle').textContent = project.subtitle;
-        
-        // 📸 直接赋纯英文数字的 URL 值给 src 属性
-        document.getElementById('projectHeroImage').src = project.heroImage;
-        document.getElementById('finalResultImage').src = project.finalImage;
 
+        // 📸 直接赋纯英文数字的 URL 值给 src 属性
+        const heroImg = document.getElementById('projectHeroImage');
+        const finalImg = document.getElementById('finalResultImage');
+
+        console.log('Setting hero image src to:', project.heroImage);
+        console.log('Setting final image src to:', project.finalImage);
+
+        heroImg.src = project.heroImage;
+        finalImg.src = project.finalImage;
+
+        console.log('Hero image element:', heroImg);
+        console.log('Hero image src after setting:', heroImg.src);
+        console.log('Hero image loaded:', heroImg.complete);
+        console.log('Hero image natural height:', heroImg.naturalHeight);
+        console.log('Hero image natural width:', heroImg.naturalWidth);
+
+        // 强制重绘
+        heroImg.style.display = 'block';
+        heroImg.style.visibility = 'visible';
+
+        // 添加加载监听器
+        heroImg.onload = () => {
+          console.log('✅ Hero image loaded successfully!');
+        };
+        heroImg.onerror = () => {
+          console.error('❌ Hero image failed to load!');
+        };
+
+        console.log('Final image src set to:', finalImg.src);
+        console.log('Final image element:', finalImg);
+        console.log('Final image loaded:', finalImg.complete);
+        console.log('Final image natural height:', finalImg.naturalHeight);
+        console.log('Final image natural width:', finalImg.naturalWidth);
+
+        // 添加加载监听器
+        finalImg.onload = () => {
+          console.log('✅ Final image loaded successfully!');
+        };
+        finalImg.onerror = () => {
+          console.error('❌ Final image failed to load!');
+        };
+
+        // 设置问题部分的图片（现在已移除问题部分，不需要设置）
         document.querySelectorAll('.split-display-img').forEach(img => {
           img.src = project.heroImage;
-        });
-        document.querySelectorAll('.split-display-img-secondary').forEach(img => {
-          img.src = project.finalImage;
+          console.log('Problem section image src:', img.src);
         });
 
-        document.getElementById('problemContent').innerHTML = `<p>${project.problem}</p>`;
+        // 设置反思部分的图片（现在已移除反思部分，不需要设置）
+        document.querySelectorAll('.split-display-img-secondary').forEach(img => {
+          img.src = project.finalImage;
+          console.log('Reflection section image src:', img.src);
+        });
+
+        // 文字内容渲染
+        document.getElementById('insightContent').innerHTML = `<p>${project.insight}</p>`;
+        document.getElementById('reflectionContent').innerHTML = `<p>${project.reflection}</p>`;
         document.getElementById('insightContent').innerHTML = `<p>${project.insight}</p>`;
 
         // 动态流程卡片拼接
@@ -229,19 +256,6 @@
         document.getElementById('reflectionContent').innerHTML = `<p>${project.reflection}</p>`;
         document.title = `${project.title} - Case Study`;
       }
-
-      // ── Lenis 全站平滑滚动 ──
-      const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        smoothWaveform: true
-      });
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
 
       // ── 视觉滚动淡入进场效果 ──
       const revealOptions = {

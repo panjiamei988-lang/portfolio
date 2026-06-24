@@ -1101,3 +1101,71 @@ html.lenis {
 .contact-link:hover, .contact-link:active {
   color: #ffffff !important;
 }
+
+/* ==================== PROJECT DETAIL MOBILE ADAPTATION ==================== */
+@media (max-width: 768px) {
+  /* 1. 详情页首屏大图或容器调整 */
+  .project-hero, 
+  .project-header,
+  .project-detail-container {
+    padding: var(--space-3xl) var(--space-md) !important; /* 缩小手机端上下左右的留白，防止内容太挤 */
+    min-height: auto !important; /* 解除电脑端可能固定的全屏高度 */
+  }
+
+  /* 2. 详情页核心标题字号缩减 */
+  .project-title {
+    font-size: 2.2rem !important; /* 电脑端大字在手机上会爆框，强行缩减为 2.2 视觉黄金字号 */
+    line-height: 1.2 !important;
+    margin-bottom: var(--space-md) !important;
+    text-align: left !important;
+  }
+
+  /* 3. 核心布局由横排（Flex/Grid）全部坍塌为单列纵排 */
+  .project-content-layout,
+  .project-grid,
+  .info-grid,
+  .detail-grid {
+    display: flex !important;
+    flex-direction: column !important; /* 强行让左右并排的图文变成上下堆叠 */
+    gap: var(--space-xl) !important;
+    padding: 0 !important;
+  }
+
+  /* 4. 文字介绍区域与侧边栏宽度强行撑满 */
+  .project-info-sidebar,
+  .project-description-text,
+  .sidebar-content,
+  .main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 5. 作品集大图、手稿图自适应优化 */
+  .project-image-wrapper,
+  .project-detail-img,
+  .detail-media img {
+    width: 100% !important;
+    height: auto !important; /* 确保图片按原本比例完美缩放，绝不拉伸变形 */
+    border-radius: var(--radius-lg) !important; /* 边缘圆角稍微变小，更精致 */
+    margin: var(--space-md) 0 !important;
+  }
+
+  /* 6. 项目参数/技术栈表格（如果是 Grid 布局） */
+  .project-meta-data, 
+  .meta-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 手机上两列平分排列 */
+    gap: var(--space-md) !important;
+    text-align: left !important;
+  }
+  
+  /* 7. 返回按钮（如有）在移动端的点击区域优化 */
+  .back-btn, .back-to-home {
+    top: var(--space-md) !important;
+    left: var(--space-md) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    font-size: 0.875rem !important;
+  }
+}

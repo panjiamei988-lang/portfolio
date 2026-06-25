@@ -35,8 +35,7 @@
     <div class="premium-container-center reveal-text">
       <span class="section-badge">02 / Strategy</span>
       <h2>Key Insights</h2>
-      <div id="insightContent" class="case-text-focus">
-        </div>
+      <div id="insightContent" class="case-text-focus"></div>
     </div>
   </section>
 
@@ -46,9 +45,10 @@
         <span class="section-badge">03 / Execution</span>
         <h2>Design Process</h2>
       </div>
-      <div class="timeline-container-premium reveal-media">
-        </div>
+      <div class="timeline-container-premium reveal-media"></div>
     </div>
+
+    <div class="detail-ambient-bg" id="dynamic-ambient-bg"></div>
   </section>
 
   <section class="case-section premium-section" data-section="final">
@@ -68,30 +68,25 @@
     <div class="premium-container-center reveal-text">
       <span class="section-badge">05 / Conclusion</span>
       <h2>Reflection & Learnings</h2>
-      <div id="reflectionContent" class="case-text-premium">
-      </div>
+      <div id="reflectionContent" class="case-text-premium"></div>
     </div>
   </section>
 
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
   <script src="assets/script.js"></script>
-  <script src="assets/project-enhancements.js"></script>
+  <script src="assets/project-data-manager.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const projectId = urlParams.get('id');
+      const projectId = urlParams.get('id') || 'eye';
 
-      // Debug: 确认 DOM 已加载
-      console.log('Project page loaded with ID:', projectId);
-
-      // ── 所有路径全部采用纯英文数字的格式，彻底杜绝中文乱码导致的不显示 ──
       const projectData = {
         eye: {
           title: "SynMuse 森眸", subtitle: "眼部按摩仪",
           heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan1.png",
           finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/yan2.png",
-          problem: "当前眼部按摩仪 market 存在安全性不可控、噪音超标、佩戴不舒适、操作复杂、卫生难维护、效果存疑、品控混乱七大核心问题,并且缺乏个性化和有效用户体验",
-          insight: '通过 “眼球避让系统+超静音电机+轻量化结构+一键旋钮+可拆卸内衬+香薰疗愈” 的组合方案，逐一回应了这些痛点，将产品定位从“功能型护眼工具”升级为 “数字时代的安全解压仪式"', 
+          insight: '通过 “眼球避让系统+超静音电机+轻量化结构+一键旋钮+可拆卸内衬+香薰疗愈” 的组合方案，逐一回应了这些痛点，将产品定位从“功能型护眼工具”升级为 "数字时代的安全解压仪式"', 
           process: [
             { step: "01", title: "背景调研", desc: "竞品调研 结构分析"}, 
             { step: "02", title: "用户分析", desc: "用户画像 故事板 用户旅程地图" },
@@ -104,7 +99,6 @@
           title: "Tesla Model400", subtitle: "拍立得",
           heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/pai1.png",
           finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/pai2.png",
-          problem: "传统拍立得体积偏大、便携性不足，难以适配出行场景,外观风格同质化，缺乏科技感与品牌辨识度",
           insight: "小巧轻盈，可放入扶手箱或随身包;极简操作，滑动/点按即可切换模式;延续特斯拉极简美学，兼具科技感与仪式感",
           process: [
             { step: "01", title: "背景调研", desc: "竞品调研 结构分析" },
@@ -118,10 +112,9 @@
           title: "Nenolizer", subtitle: "儿童雾化器",
           heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wu1.png",
           finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wu2.png",
-          problem: "传统雾化器外观冰冷、医疗器械感强，儿童抗拒使用;雾化过程枯燥，缺乏安抚与陪伴感",
           insight: "童趣外观，弱化医疗器械的恐惧感;结合中医“宣通肺气”理念，辅助治疗效果",
           process: [
-            { step: "01", title: "背景调研", desc: "市场潜力 Product 机会 结构分析" },
+            { step: "01", title: "背景调研", desc: "市场潜力 产品机会 结构分析" },
             { step: "02", title: "用户分析", desc: "用户画像 用户需求" },
             { step: "03", title: "设计过程", desc: "情绪板 设计草图 AIGC arduino技术试验" },
             { step: "04", title: "产品展示", desc: "爆炸图 细节图" }
@@ -132,7 +125,6 @@
           title: "PeakRescue", subtitle: "高原供氧救援保障马甲",
           heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/ma1.png",
           finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/ma2.png",
-          problem: "供氧续航不足：间断供氧，需补给；重量虽小，但续航短；管线干扰战术：外露管线易钩挂，妨碍战术动作；制氧适配性差：无便捷吸氧接口，紧急操作繁琐；",
           insight: "不间断供氧，延长单次作业时间；嵌入式制氧模块，紧急吸氧一按即开；轻量化设计，不增加额外负担；可拆卸电池，随用随取",
           process: [
             { step: "01", title: "背景调研", desc: "竞品调研 产品痛点" },
@@ -146,7 +138,6 @@
           title: "折影叠帐", subtitle: "车顶帐",
           heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/che1.png",
           finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/che2.png",
-          problem: "车顶帐与天幕相互独立，需分别购买、分别携带、分别搭建；传统车顶帐收折后体积大、重量重，单人无法装卸;功能单一，无法满足“睡眠+遮阳+社交”多场景需求",
           insight: "一物多用，车顶帐与天幕功能合二为一;轻量化,单人可拆卸;模块化快拆，不使用时减少汽车负担;防蚊、防虫，解决传统天幕敞开式痛点",
           process: [
             { step: "01", title: "背景调研", desc: "竞品分析 用户旅程地图" },
@@ -160,13 +151,12 @@
           title: "HoldLine", subtitle: "摄影人群下肢外骨骼",
           heroImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wai1.png",
           finalImage: "https://panjiamei988-lang.github.io/portfolio-images/images/wai2.png",
-          problem: "重量普遍偏重，长时间穿戴负担大；穿戴时间偏长,紧急场景下不够高效",
           insight: "轻量化,减少下肢负担;快速穿脱,适配户外摄影等高频切换场景;智能步态识别，上坡支撑+下坡缓冲自动切换;防水防尘，适配户外复杂地形",
           process: [
             { step: "01", title: "背景调研", desc: "竞品调研 结构分析" },
             { step: "02", title: "场景可行性分析", desc: "户外风光摄影 生态摄影 婚礼/活动跟拍 户外赛事/演唱会" },
             { step: "03", title: "设计过程", desc: "情绪板 设计草图 使用流程图" },
-            { step: "04", title: "产品展示", desc: "爆炸图 细节图 设计亮点" }
+            { step: "04", title: "产品展示", desc: "爆炸图 细节图设计亮点" }
           ],
           reflection: "面向摄影人群的外骨骼，本质上是“让创作者专注于构图，而非负重”。当设备能自动感知蹲姿/站姿、上坡/下坡并动态调整助力时，技术便退居幕后，成为创作者身体的延伸——这或许是可穿戴设备最理想的状态。"
         }
@@ -179,64 +169,13 @@
         document.getElementById('projectTitle').textContent = project.title;
         document.getElementById('projectSubtitle').textContent = project.subtitle;
 
-        // 📸 直接赋纯英文数字的 URL 值给 src 属性
-        const heroImg = document.getElementById('projectHeroImage');
-        const finalImg = document.getElementById('finalResultImage');
+        // 首尾主图赋值
+        document.getElementById('projectHeroImage').src = project.heroImage;
+        document.getElementById('finalResultImage').src = project.finalImage;
 
-        console.log('Setting hero image src to:', project.heroImage);
-        console.log('Setting final image src to:', project.finalImage);
-
-        heroImg.src = project.heroImage;
-        finalImg.src = project.finalImage;
-
-        console.log('Hero image element:', heroImg);
-        console.log('Hero image src after setting:', heroImg.src);
-        console.log('Hero image loaded:', heroImg.complete);
-        console.log('Hero image natural height:', heroImg.naturalHeight);
-        console.log('Hero image natural width:', heroImg.naturalWidth);
-
-        // 强制重绘
-        heroImg.style.display = 'block';
-        heroImg.style.visibility = 'visible';
-
-        // 添加加载监听器
-        heroImg.onload = () => {
-          console.log('✅ Hero image loaded successfully!');
-        };
-        heroImg.onerror = () => {
-          console.error('❌ Hero image failed to load!');
-        };
-
-        console.log('Final image src set to:', finalImg.src);
-        console.log('Final image element:', finalImg);
-        console.log('Final image loaded:', finalImg.complete);
-        console.log('Final image natural height:', finalImg.naturalHeight);
-        console.log('Final image natural width:', finalImg.naturalWidth);
-
-        // 添加加载监听器
-        finalImg.onload = () => {
-          console.log('✅ Final image loaded successfully!');
-        };
-        finalImg.onerror = () => {
-          console.error('❌ Final image failed to load!');
-        };
-
-        // 设置问题部分的图片（现在已移除问题部分，不需要设置）
-        document.querySelectorAll('.split-display-img').forEach(img => {
-          img.src = project.heroImage;
-          console.log('Problem section image src:', img.src);
-        });
-
-        // 设置反思部分的图片（现在已移除反思部分，不需要设置）
-        document.querySelectorAll('.split-display-img-secondary').forEach(img => {
-          img.src = project.finalImage;
-          console.log('Reflection section image src:', img.src);
-        });
-
-        // 文字内容渲染
+        // 核心板块文字内容渲染
         document.getElementById('insightContent').innerHTML = `<p>${project.insight}</p>`;
         document.getElementById('reflectionContent').innerHTML = `<p>${project.reflection}</p>`;
-        document.getElementById('insightContent').innerHTML = `<p>${project.insight}</p>`;
 
         // 动态流程卡片拼接
         const timelineHTML = project.process.map(step => {
@@ -253,11 +192,10 @@
         }).join('');
         document.querySelector('.timeline-container-premium').innerHTML = timelineHTML;
 
-        document.getElementById('reflectionContent').innerHTML = `<p>${project.reflection}</p>`;
         document.title = `${project.title} - Case Study`;
       }
 
-      // ── 视觉滚动淡入进场效果 ──
+      // ── 视觉滚动淡入进场效果（Intersection Observer） ──
       const revealOptions = {
         root: null,
         threshold: 0.1, 
@@ -270,9 +208,11 @@
           const mediaElements = entry.target.querySelectorAll('.reveal-media');
           
           if (entry.isIntersecting) {
+            entry.target.classList.add('active');
             textElements.forEach(el => el.classList.add('active'));
             mediaElements.forEach(el => el.classList.add('active'));
           } else {
+            entry.target.classList.remove('active');
             textElements.forEach(el => el.classList.remove('active'));
             mediaElements.forEach(el => el.classList.remove('active'));
           }

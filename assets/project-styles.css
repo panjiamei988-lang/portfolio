@@ -121,7 +121,7 @@
 }
 
 .premium-section h2 {
-  font-family: 'PP Editorial New', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 3rem;
   font-weight: 400;
   line-spacing: 1.1;
@@ -132,7 +132,7 @@
 
 /* 首屏特殊大标题 */
 #projectTitle {
-  font-family: 'PP Editorial New', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 5.5rem;
   font-weight: 900;
   line-height: 1.05;
@@ -157,7 +157,7 @@
 
 /* 核心视点屏大字号文本 */
 .case-text-focus p {
-  font-family: 'PP Editorial New', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   line-height: 1.5;
   color: #ffffff !important;
@@ -285,7 +285,7 @@
 }
 
 .card-num {
-  font-family: 'PP Editorial New', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   color: rgba(255, 255, 255, 0.2);
   margin-bottom: 25px;

@@ -180,15 +180,12 @@ class TemplateGenerator {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Designer Portfolio</title>
 
-  <!-- Load Fonts First -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
 
-  <!-- Then Load Styles -->
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/ultimate-fix.css">
 </head>
 <body>
-  <!-- NAVIGATION -->
   <nav class="nav-main">
     <div class="nav-container">
       <a href="#about" class="nav-link">About</a>
@@ -198,16 +195,13 @@ class TemplateGenerator {
     </div>
   </nav>
 
-  <!-- DYNAMIC BACKGROUND -->
   <div class="fluid-bg"></div>
   <div class="noise-overlay"></div>
 
-  <!-- CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-follower"></div>
   <div class="cursor-text"></div>
 
-  <!-- HERO SECTION (ELEVON STYLE) -->
   <section class="hero" id="about">
     <div class="hero-content">
       <h1 class="hero-title">Product Designer</h1>
@@ -216,14 +210,12 @@ class TemplateGenerator {
     </div>
   </section>
 
-  <!-- WORKS SECTION (VERTICAL STYLE) -->
   <section class="works" id="works">
     <div class="works-container">
-${projectsHTML}
+\${projectsHTML}
     </div>
   </section>
 
-  <!-- SKILLS SECTION -->
   <section class="skills" id="skills">
     <div class="skills-container">
       <h2 class="section-title">Skills</h2>
@@ -238,7 +230,6 @@ ${projectsHTML}
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
   <section class="contact" id="contact">
     <div class="contact-container">
       <h2 class="section-title">Get In Touch</h2>
@@ -254,7 +245,7 @@ ${projectsHTML}
 </html>`;
   }
 
-  // 生成project.html模板（会根据ID动态加载具体项目）
+  // 生成project.html模板
   generateProjectHTMLTemplate() {
     return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -267,14 +258,12 @@ ${projectsHTML}
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="project-page">
-  <!-- NAVIGATION -->
   <nav class="nav-main">
     <div class="nav-container">
       <a href="index.html" class="nav-link">← Portfolio</a>
     </div>
   </nav>
 
-  <!-- SCROLL-DRIVEN SECTIONS -->
   <section class="case-hero" data-section="hero">
     <div class="case-content">
       <h1 id="projectTitle">Loading...</h1>
@@ -305,8 +294,7 @@ ${projectsHTML}
     <div class="case-content">
       <h2>Design Process</h2>
       <div class="timeline-container" id="timeline-container">
-        <!-- Timeline will be loaded here -->
-      </div>
+        </div>
     </div>
   </section>
 
@@ -349,26 +337,26 @@ ${projectsHTML}
           document.getElementById('projectHeroImage').src = project.image;
           document.getElementById('finalResultImage').src = project.image;
 
-          document.getElementById('problemContent').innerHTML = \`<p>\${project.problem}</p>\`;
-          document.getElementById('insightContent').innerHTML = \`<p>\${project.insight}</p>\`;
+          document.getElementById('problemContent').innerHTML = \\\`<p>\\\${project.problem}</p>\\\`;
+          document.getElementById('insightContent').innerHTML = \`<p>\\\${project.insight}</p>\\\`;
 
           // Update timeline
-          const timelineHTML = project.process.map(step => \`
+          const timelineHTML = project.process.map(step => \\\`
             <div class="timeline-item">
-              <div class="timeline-marker">\${step.step}</div>
+              <div class="timeline-marker">\\\${step.step}</div>
               <div class="timeline-content">
-                <h3>\${step.title}</h3>
-                <p>\${step.desc}</p>
+                <h3>\\\${step.title}</h3>
+                <p>\\\${step.desc}</p>
               </div>
             </div>
-          \`).join('');
+          \\\`).join('');
           document.getElementById('timeline-container').innerHTML = timelineHTML;
 
           // Update description
           document.querySelector('.final-description p').textContent = project.solution;
 
           // Update title
-          document.title = \`\${project.title} - Case Study\`;
+          document.title = \\\`\\\${project.title} - Case Study\\\`;
         }
       }
 
@@ -398,13 +386,9 @@ ${projectsHTML}
 
 // ==================== INITIALIZATION ====================
 if (typeof document !== 'undefined') {
-  // Initialize data manager
   const dataManager = new ProjectDataManager();
-
-  // Initialize template generator
   const templateGenerator = new TemplateGenerator(dataManager);
 
-  // Make globally available
   window.ProjectDataManager = ProjectDataManager;
   window.TemplateGenerator = TemplateGenerator;
 
@@ -414,16 +398,119 @@ if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.project-detail-container');
   if (container) {
-    // 检查是否是从主页点击过来的
     if (sessionStorage.getItem('playDetailsEntrance') === 'true') {
-      // 稍微延迟 100ms 播放，等浏览器加载完渲染，动效最丝滑
       setTimeout(() => {
         container.classList.add('entrance-active');
-        sessionStorage.removeItem('playDetailsEntrance'); // 用完即丢
+        sessionStorage.removeItem('playDetailsEntrance');
       }, 100);
     } else {
-      // 如果用户是直接刷新详情页的，直接显示，不影响基础体验
       container.classList.add('entrance-active');
     }
+  }
+});
+
+// ==================== AMBIENT BACKGROUND SYSTEM ====================
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const projectId = urlParams.get('id') || 'eye';
+
+  // 1. 完整图片数据源（包含已配好的 9 张高定图）
+  const ambientBgData = {
+    'eye': [
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.1.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.2.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.3.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.4.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.5.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.6.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.7.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.8.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/1.9.png'
+    ],
+    'tesla': [
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.1.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.2.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.3.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.4.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.5.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.6.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.7.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.8.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/2.9.png'
+    ],
+    'nebulizer': [
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.1.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.2.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.3.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.4.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.5.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.6.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.7.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.8.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/3.9.png'
+    ],
+    'rescue': [
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.1.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.2.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.3.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.4.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.5.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.6.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.7.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.8.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/4.9.png'
+    ],
+    'rooftop': [
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.1.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.2.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.3.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.4.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.5.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.6.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.7.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.8.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/5.9.png'
+    ], // 🌟 修复了这里的闭合逗号
+    'exo': [
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.1.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.2.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.3.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.4.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.5.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.6.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.7.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.8.png',
+      'https://panjiamei988-lang.github.io/portfolio-images/images/6.9.png'
+    ]
+  };
+
+  const currentImgs = ambientBgData[projectId] || ambientBgData['eye'];
+  const bgContainer = document.getElementById('dynamic-ambient-bg');
+  
+  if (bgContainer && currentImgs && currentImgs.length > 0) {
+    let col1HTML = '';
+    let col2HTML = '';
+    let col3HTML = '';
+
+    // 🌟 全自动智能发牌分配算法：无论多少张图，都能完美均匀分摊到 3 个滚动列中
+    currentImgs.forEach((imgSrc, index) => {
+      const imgTag = `<img src="${imgSrc}" alt="ambient item">`;
+      if (index % 3 === 0) col1HTML += imgTag;
+      else if (index % 3 === 1) col2HTML += imgTag;
+      else col3HTML += imgTag;
+    });
+
+    // 🌟 首尾无缝克隆，实现动画中途100%隐形折返，不会断流
+    col1HTML = col1HTML + col1HTML;
+    col2HTML = col2HTML + col2HTML;
+    col3HTML = col3HTML + col3HTML;
+
+    // 动态渲染写入到具有运动类名的容器中
+    bgContainer.innerHTML = `
+      <div class="ambient-column col-up">${col1HTML}</div>
+      <div class="ambient-column col-down animation-delay-1">${col2HTML}</div>
+      <div class="ambient-column col-up">${col3HTML}</div>
+    `;
+    console.log(`✨ 成功将项目 [${projectId}] 的 9 张背景流动画注入到 3 个滚动列！`);
   }
 });

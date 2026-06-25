@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Case Study - Product Designer</title>
 
-  <!-- Load Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=PP+Editorial+New:wght@400;700;900&display=swap">
+  <!-- Load Fonts - 统一使用 Inter -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap">
 
   <!-- Load Styles -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -15,6 +15,13 @@
 
   <style>
     /* Project specific styles */
+    :root {
+      /* 统一字体 - 使用 Inter */
+      --font-display: 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Inter', monospace;
+    }
+
     .project-page {
       background: var(--color-bg-primary);
     }
@@ -184,7 +191,7 @@
     .timeline-content h3 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      font-family: var(--font-display);
+      font-family: 'Inter', sans-serif;
     }
 
     .timeline-content p {

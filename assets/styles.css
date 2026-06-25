@@ -12,10 +12,10 @@
   --color-accent-dark: #8B0000;
   --color-border: #2A2A2A;
 
-  /* Typography Scale */
-  --font-display: 'PP Editorial New', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: Inter, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Typography Scale - 统一使用 Inter */
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Inter', monospace;
 
   /* Spacing Scale (4px base) */
   --space-xs: 0.25rem;   /* 4px */
@@ -1167,5 +1167,109 @@ html.lenis {
     left: var(--space-md) !important;
     padding: var(--space-sm) var(--space-md) !important;
     font-size: 0.875rem !important;
+  }
+}
+
+/* ==================== 详情页 Design Process 专属流体背景 ==================== */
+
+/* 1. 让 Design Process 这一页成为背景的绝对定位基准，并隐藏溢出的漂移图片 */
+section[data-section="process"] {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: #000000 !important; /* 纯黑底色，完美衬托流体质感 */
+  z-index: 1;
+}
+
+/* 2. 背景容器：绝对定位，死死钉在 Design Process 这一页的背后 */
+.detail-ambient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 衬在流程卡片文字和动态内容的后方 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 完美的 3 列平分 */
+  gap: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  pointer-events: none; /* 绝对不能阻挡前排任何卡片的点击和手势滚动 */
+  opacity: 1 !important;
+}
+
+/* 每一列的垂直排版 */
+.ambient-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: max-content;
+  will-change: transform;
+}
+
+/* 背景渲染图质感调校：提升亮度与可见度 */
+.ambient-column img {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important; /* 裁剪为工整的正方形 */
+  object-fit: cover !important;
+  border-radius: 20px !important;
+  
+  /* 🌟 核心调整 1：将不透明度从 0.15 提升到 0.28，让细节显现 */
+  opacity: 0.28 !important; 
+  
+  /* 🌟 核心调整 2：将 brightness 从 0.3 提升到 0.65，大幅度提亮图片本身 */
+  filter: brightness(0.65) grayscale(0.1) !important; 
+  
+  transition: opacity 0.5s ease;
+}
+
+/* 移动端手机适配同步提亮 */
+@media (max-width: 768px) {
+  .ambient-column img {
+    /* 🌟 手机端也同步提亮，防止屏幕反光看不清 */
+    opacity: 0.20 !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* 动效核心 1：向上无缝流动（图片变多，时间从35s拉长到60s，保持丝滑慢速漂移） */
+.col-up {
+  animation: floatScrollUp 60s linear infinite !important;
+}
+
+/* 动效核心 2：向下无缝流动 */
+.col-down {
+  animation: floatScrollDown 60s linear infinite !important;
+}
+
+/* 错开第二列的启动时间，让韵律更丰富 */
+.animation-delay-1 {
+  animation-delay: -15s; /* 延迟时间同步等比例拉长 */
+}
+
+/* 无缝向上漂移轨迹 */
+@keyframes floatScrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* 滚动到正好一半时无缝折返 */
+}
+
+/* 无缝向下漂移轨迹 */
+@keyframes floatScrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* 移动端手机适配 */
+@media (max-width: 768px) {
+  .detail-ambient-bg {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+  }
+  .detail-ambient-bg .ambient-column:nth-child(3) {
+    display: none !important; 
+  }
+  .ambient-column img {
+    opacity: 0.10 !important;
+    border-radius: 12px !important;
   }
 }
